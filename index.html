@@ -168,7 +168,7 @@
       }
 
       .floating-card-1 {
-        top: 10%;
+        top: -10%;
         right: 5%;
         animation-delay: 0s;
       }
@@ -512,6 +512,16 @@
 
       /* Responsive */
       @media (max-width: 768px) {
+        @keyframes floatCard {
+          0%,
+          100% {
+            transform: scale(0.6) translateY(0px);
+          }
+          50% {
+            transform: scale(0.6) translateY(-10px);
+          }
+        }
+
         .hero-section {
           min-height: auto;
           padding: 80px 0 60px;
@@ -522,7 +532,25 @@
         }
 
         .floating-card {
-          display: none;
+          position: absolute;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border-radius: 16px;
+          padding: 1rem 1.5rem;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          animation: floatCard 3s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+          top: -15%;
+          right: 0;
+          animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+          top: 2%;
+          left: 5%;
+          animation-delay: 1s;
         }
 
         .step-line {
@@ -670,11 +698,12 @@
       <div class="container mb-0">
         <div class="row align-items-center">
           <div class="col-lg-6 hero-content mb-5 mb-lg-0">
-            <h1 class="hero-title">Belanja Dapat Uang? Yes, Bisa!</h1>
+            <h1 class="hero-title">
+              Dapatkan Cashback setiap kali Anda berbelanja
+            </h1>
             <p class="hero-subtitle">
-              Platform cashback terdepan yang mengubah setiap belanja online
-              Anda menjadi passive income. Dapatkan hingga 15% cashback
-              otomatis!
+              Daftar sekarang untuk menikmati penawaran <br />
+              cashback instan tanpa batas
             </p>
             <div class="d-flex gap-3 flex-wrap">
               <a href="register_page.html" class="btn btn-primary-modern">
@@ -720,7 +749,7 @@
                   <i class="bi bi-people-fill fs-3 text-primary me-3"></i>
                   <div>
                     <small class="text-muted d-block">Total Member</small>
-                    <strong class="fs-5">50.000+</strong>
+                    <strong class="fs-5">3.049+</strong>
                   </div>
                 </div>
               </div>
@@ -891,7 +920,7 @@
     <section id="cara" class="steps-section">
       <div class="container">
         <div class="text-center mb-5">
-          <h2 class="section-title">Bagaimana Cara Mendapatkn Cashback?</h2>
+          <h2 class="section-title">Bagaimana Cara Mendapatkan Cashback?</h2>
           <p class="section-subtitle">
             4 langkah mudah untuk mulai dapat cashback
           </p>
@@ -902,7 +931,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="step-card">
               <div class="step-icon">
-                <i class="bi bi-clipboard-fill"></i>
+                <i class="bi bi-link-45deg"></i>
               </div>
               <h5 class="fw-bold mb-2">Salin Link</h5>
               <p class="text-muted">
@@ -960,18 +989,16 @@
           <div class="col-lg-6">
             <div class="price-card text-center">
               <h3 class="fw-bold mb-4">Affiliate Program</h3>
-              <p class="text-muted mb-4">
-                Referensikan Link Cashback dan Dapatkan
-                <strong>
-                  Cashback dari Belanja Tim, Cashback Referensi Member
-                </strong>
-                dan <strong>Reword hingga Millyaran Rupiah</strong>
-              </p>
 
               <div class="mb-4">
                 <p class="text-muted mb-2">Cukup Dengan</p>
                 <div class="price-old mb-2">Rp 499.000</div>
                 <div class="price-new">Rp 299.000</div>
+                <p class="text-muted mb-4">
+                  <strong> Dapatkan Penghasilan Tambahan</strong> melalui
+                  Cashback dari belanja tim, Cashback Referensi Member dan
+                  Reward Hingga Milyaran Rupiah
+                </p>
                 <p class="text-muted mt-3">
                   <strong>
                     Kamu Akan Mendapatkan Semua Fitur Aplikasi Link Cashback
@@ -1049,9 +1076,9 @@
               />
             </h5>
             <p class="text-white-50">
-              Platform terdepan untuk mendapatkan cashback dari setiap pembelian
-              online Anda. Bergabunglah dengan ribuan pengguna yang sudah
-              merasakan manfaatnya.
+              Link Cashback adalah aplikasi yang menghubungkan penjual
+              e-commerce dengan konsumen, juga mempermudah transaksi online dan
+              memberikan cashback bagi pengguna.
             </p>
           </div>
 
