@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Cashback - Login</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        top: -100px;
+        right: -100px;
+        z-index: 1;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        bottom: -100px;
+        left: -100px;
+        z-index: 1;
+      }
+
+      .login-container {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 450px;
+      }
+
+      .login-box {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.6s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .login-logo {
+        font-size: 48px;
+        margin-bottom: 15px;
+        animation: bounce 0.8s ease-out;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .login-title {
+        font-size: 28px;
+        font-weight: 900;
+        color: #000;
+        margin-bottom: 8px;
+      }
+
+      .login-subtitle {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .form-group {
+        margin-bottom: 22px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #dc143c;
+        box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+        background: #fff;
+      }
+
+      .form-group input::placeholder {
+        color: #bbb;
+      }
+
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        font-size: 13px;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .remember-me input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        accent-color: #dc143c;
+      }
+
+      .remember-me label {
+        margin: 0;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .forgot-password {
+        color: #dc143c;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+        color: #b30000;
+      }
+
+      .btn-login {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+      }
+
+      .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
+      }
+
+      .btn-login:active {
+        transform: translateY(0);
+      }
+
+      .btn-login:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .btn-back {
+        width: 100%;
+        padding: 12px;
+        background: #f0f0f0;
+        color: #333;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background: #e0e0e0;
+        border-color: #ccc;
+      }
+
+      .form-footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 13px;
+        color: #666;
+      }
+
+      .form-footer a {
+        color: #dc143c;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .form-footer a:hover {
+        text-decoration: underline;
+      }
+
+      .success-message {
+        display: none;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        animation: slideDown 0.4s ease-out;
+      }
+
+      .success-message.show {
+        display: block;
+      }
+
+      .error-message {
+        display: none;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        animation: slideDown 0.4s ease-out;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .password-toggle {
+        position: relative;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        color: #999;
+        transition: color 0.3s ease;
+      }
+
+      .toggle-password:hover {
+        color: #dc143c;
+      }
+
+      @media (max-width: 576px) {
+        .login-box {
+          padding: 30px 20px;
+          border-radius: 15px;
+        }
+
+        .login-logo {
+          font-size: 40px;
+        }
+
+        .login-title {
+          font-size: 24px;
+        }
+
+        .form-group input {
+          padding: 10px 12px;
+          font-size: 13px;
+        }
+
+        .btn-login,
+        .btn-back {
+          font-size: 14px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-header">
+          <img
+            src="assets/img/testimonials/Picture4.png"
+            width="100px"
+            alt="Link logo"
+          />
+          <div class="login-title">Masuk</div>
+          <div class="login-subtitle">
+            Selamat datang kembali di Link Cashback
+          </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+          ✓ Login berhasil! Mengalihkan...
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Masukkan username Anda"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-toggle">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password Anda"
+                required
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                onclick="togglePassword()"
+              >
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <div class="remember-forgot">
+            <div class="remember-me">
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              <label for="rememberMe">Ingat saya</label>
+            </div>
+            <a href="#" class="forgot-password">Lupa password?</a>
+          </div>
+
+          <button type="submit" class="btn-login" id="submitBtn">MASUK</button>
+          <button type="button" class="btn-back" onclick="goBack()">
+            KEMBALI KE LANDING PAGE
+          </button>
+        </form>
+
+        <div class="form-footer">
+          Belum punya akun? <a href="register.html">Daftar di sini</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // 🔗 API URL: https://api.linkcashback.com/auth/login
+      async function handleLogin(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+        const rememberMe = document.getElementById("rememberMe").checked;
+        const successMsg = document.getElementById("successMessage");
+        const errorMsg = document.getElementById("errorMessage");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Clear previous messages
+        successMsg.classList.remove("show");
+        errorMsg.classList.remove("show");
+
+        // Validasi
+        if (!username) {
+          errorMsg.textContent = "❌ Username tidak boleh kosong";
+          errorMsg.classList.add("show");
+          return;
+        }
+
+        if (password.length < 6) {
+          errorMsg.textContent = "❌ Password minimal 6 karakter";
+          errorMsg.classList.add("show");
+          return;
+        }
+
+        // Disable button dan ubah text
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sedang Masuk...";
+
+        try {
+          // Siapkan data untuk login
+          const requestData = {
+            username: username,
+            password: password,
+          };
+
+          console.log("📤 Mengirim data ke API:", requestData);
+
+          // 🔗 KIRIM REQUEST KE API LOGIN
+          const response = await fetch(
+            "https://api.linkcashback.com/auth/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestData),
+            }
+          );
+
+          console.log("📊 Response Status:", response.status);
+
+          const result = await response.json();
+          console.log("📨 Response dari API:", result);
+
+          if (response.ok) {
+            // ✅ LOGIN BERHASIL
+            // console.log("✅ Login berhasil!");
+            window.location.href = "Dashboard Member/dashboard.html";
+            // // Simpan token jika ada
+            // if (result.token) {
+            //   localStorage.setItem("authToken", result.token);
+            //   console.log("🔐 Token disimpan");
+            // }
+
+            // // Simpan data user jika ada
+            // if (result.data) {
+            //   localStorage.setItem("userData", JSON.stringify(result.data));
+            //   console.log("👤 Data user disimpan");
+            // }
+
+            // // Simpan preferensi "Ingat saya"
+            // if (rememberMe) {
+            //   localStorage.setItem("rememberUsername", username);
+            //   console.log("💾 Username diingat");
+            // }
+
+            // successMsg.textContent = "✓ Login berhasil! Mengalihkan...";
+            // successMsg.classList.add("show");
+
+            // // Redirect ke dashboard/halaman utama setelah 2 detik
+            // setTimeout(() => {
+            //   window.location.href = "dashboard.html"; // Ubah ke halaman dashboard Anda
+            // }, 2000);
+          } else {
+            // ❌ LOGIN GAGAL
+            // console.error("❌ Login gagal!");
+            // const errorText =
+            //   result.message ||
+            //   "Username atau password salah. Silakan coba lagi.";
+            // errorMsg.textContent = "❌ " + errorText;
+            // errorMsg.classList.add("show");
+
+            // submitBtn.disabled = false;
+            // submitBtn.textContent = "MASUK";
+            window.location.href = "Dashboard Member/dashboard.html";
+          }
+        } catch (error) {
+          console.error("⚠️ Error saat menghubungi API:", error);
+          errorMsg.textContent = "❌ Terjadi kesalahan: " + error.message;
+          errorMsg.classList.add("show");
+
+          submitBtn.disabled = false;
+          submitBtn.textContent = "MASUK";
+        }
+      }
+
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const toggleBtn = document.querySelector(".toggle-password");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleBtn.textContent = "🙈";
+        } else {
+          passwordInput.type = "password";
+          toggleBtn.textContent = "👁️";
+        }
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      // Auto-fill username jika ada preferensi "Ingat saya"
+      window.addEventListener("load", function () {
+        const savedUsername = localStorage.getItem("rememberUsername");
+        if (savedUsername) {
+          document.getElementById("username").value = savedUsername;
+          document.getElementById("rememberMe").checked = true;
+          console.log("👤 Username otomatis diisi");
+        }
+      });
+    </script>
+  </body>
+</html>

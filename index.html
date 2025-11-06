@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Cashback - Belanja Dapat Uang</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+      :root {
+        --primary: #dc143c;
+        --primary-dark: #b30000;
+        --primary-light: #ff4d6d;
+        --dark: #0f0f0f;
+        --light: #fafafa;
+        --gray: #64748b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        overflow-x: hidden;
+        background: var(--light);
+      }
+
+      /* Navbar Modern */
+      .navbar-modern {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-modern.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        color: var(--dark) !important;
+        font-weight: 500;
+        padding: 0.5rem 1rem !important;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: var(--primary) !important;
+      }
+
+      /* Hero Section - Modern */
+      .hero-section {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
+        padding: 60px 0;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 60%;
+        height: 150%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: white;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .hero-image-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-image {
+        margin-bottom: -100px;
+        max-width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .floating-card {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        animation: floatCard 3s ease-in-out infinite;
+      }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .floating-card-1 {
+        top: 10%;
+        right: 5%;
+        animation-delay: 0s;
+      }
+
+      .floating-card-2 {
+        top: 10%;
+        left: 5%;
+        animation-delay: 1s;
+      }
+
+      /* Buttons Modern */
+      .btn-primary-modern {
+        background: white;
+        color: var(--primary);
+        padding: 0.875rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-primary-modern:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        background: var(--light);
+      }
+
+      .btn-outline-modern {
+        background: transparent;
+        color: white;
+        padding: 0.875rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        border: 2px solid white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-modern:hover {
+        background: white;
+        color: var(--primary);
+      }
+
+      /* About Section - Glassmorphism */
+      .about-section {
+        padding: 100px 0;
+        background: linear-gradient(180deg, var(--light) 0%, #fff 100%);
+      }
+
+      /* Phone Mockup */
+      .phone-mockup-wrapper {
+        position: relative;
+        display: inline-block;
+        animation: phoneFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .phone-frame {
+        position: relative;
+        width: 300px;
+        height: 600px;
+        /* background: #1f1f1f; */
+        border-radius: 40px;
+        /* padding: 12px; */
+        /* box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05); */
+        margin: 0 auto;
+      }
+
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 25px;
+        background: #1f1f1f;
+        border-radius: 0 0 20px 20px;
+        z-index: 10;
+      }
+
+      .phone-frame::after {
+        content: "";
+        position: absolute;
+        top: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        z-index: 11;
+      }
+
+      .app-screenshot {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+        border-color: rgba(220, 20, 60, 0.2);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Feature Cards */
+      .feature-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(220, 20, 60, 0.1);
+        border-color: var(--primary);
+      }
+
+      .feature-card i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      /* Steps Section */
+      .steps-section {
+        padding: 100px 0;
+        background: white;
+      }
+      /*
+      .step-card {
+        text-align: center;
+        position: relative;
+        padding: 2rem;
+      }
+
+      .step-number {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
+      }
+
+      .step-line {
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        z-index: -1;
+      } */
+
+      .step-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .step-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #b30000; /* warna utama */
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin: 0 auto 15px;
+      }
+
+      .step-card h5 {
+        color: #222;
+      }
+
+      .step-card p {
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.03)"/></svg>');
+        opacity: 0.5;
+      }
+
+      .price-card {
+        background: white;
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 2;
+      }
+
+      .price-old {
+        font-size: 1.5rem;
+        text-decoration: line-through;
+        color: var(--gray);
+      }
+
+      .price-new {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary);
+      }
+
+      /* Footer Modern */
+      .footer-modern {
+        background: var(--dark);
+        color: white;
+        padding: 60px 0 30px;
+      }
+
+      .footer-modern a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-modern a:hover {
+        color: white;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.5rem;
+        transition: all 0.3s;
+      }
+
+      .social-icon:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .store-buttons {
+        gap: 10px; /* jarak antar tombol */
+      }
+
+      .store-btn {
+        width: 250px !important;
+        height: 80px !important;
+        transition: transform 0.2s ease;
+      }
+
+      .store-btn:hover {
+        transform: scale(1.05);
+      }
+
+      /*
+
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-section {
+          min-height: auto;
+          padding: 80px 0 60px;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .floating-card {
+          display: none;
+        }
+
+        .step-line {
+          display: none;
+        }
+
+        .about-section,
+        .steps-section,
+        .cta-section {
+          padding: 60px 0;
+        }
+
+        .glass-card {
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .glass-card:hover {
+          transform: translateX(0);
+        }
+
+        /* Phone Mockup Mobile */
+        .phone-mockup-wrapper {
+          margin-bottom: 3rem;
+        }
+
+        .phone-frame {
+          width: 250px;
+          height: 500px;
+          border-radius: 35px;
+          padding: 10px;
+        }
+
+        .phone-frame::before {
+          height: 20px;
+          width: 80px;
+        }
+
+        .phone-frame::after {
+          width: 50px;
+          height: 5px;
+          top: 25px;
+        }
+
+        .app-screenshot {
+          border-radius: 25px;
+        }
+
+        .feature-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.25rem;
+        }
+        .store-buttons {
+          flex-direction: column;
+          gap: 5px; /* rapatkan jarak di mobile */
+        }
+
+        .store-btn {
+          width: 50vw !important;
+          height: 60px !important; /* kecilkan sedikit */
+        }
+        .step-card {
+          padding: 20px 15px;
+        }
+
+        .step-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 26px;
+        }
+      }
+
+      /* Smooth Scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Section Titles */
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: var(--gray);
+        margin-bottom: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-modern">
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold fs-4"
+          href="#"
+          style="color: var(--primary)"
+        >
+          <img
+            src="assets/v2/logo.png"
+            alt="Logo"
+            height="35"
+            class="logo-desktop me-2"
+          />
+        </a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#beranda">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#fitur">Fitur</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cara">Cara Kerja</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#harga">Harga</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section">
+      <div class="container mb-0">
+        <div class="row align-items-center">
+          <div class="col-lg-6 hero-content mb-5 mb-lg-0">
+            <h1 class="hero-title">Belanja Dapat Uang? Yes, Bisa!</h1>
+            <p class="hero-subtitle">
+              Platform cashback terdepan yang mengubah setiap belanja online
+              Anda menjadi passive income. Dapatkan hingga 15% cashback
+              otomatis!
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="register_page.html" class="btn btn-primary-modern">
+                <i class="bi bi-rocket-takeoff me-2"></i>Daftar Sekarang
+              </a>
+              <!-- <a href="#cara" class="btn btn-outline-modern">
+                Pelajari Lebih Lanjut
+              </a> -->
+            </div>
+            <!-- <div class="mt-4">
+              <small class="text-white-50">
+                <i class="bi bi-check-circle-fill text-white me-2"></i>
+                Gratis biaya admin • Pencairan instan
+              </small>
+            </div> -->
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-image-wrapper">
+              <img
+                src="assets/v2/people1.png"
+                class="hero-image"
+                style="border-radius: 20px"
+              />
+              <!-- <img
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=600&fit=crop"
+                alt="Hero"
+                class="hero-image"
+                style="max-width: 500px; border-radius: 20px"
+              /> -->
+
+              <div class="floating-card floating-card-1">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-cash-coin fs-3 text-success me-3"></i>
+                  <div>
+                    <small class="text-muted d-block">Cashback Hari Ini</small>
+                    <strong class="fs-5">Rp 2.450.000</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="floating-card floating-card-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-people-fill fs-3 text-primary me-3"></i>
+                  <div>
+                    <small class="text-muted d-block">Total Member</small>
+                    <strong class="fs-5">50.000+</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="about-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Kenapa Link Cashback?</h2>
+          <p class="section-subtitle">
+            Solusi terbaik untuk belanja hemat dan cuan maksimal
+          </p>
+        </div>
+
+        <div class="row align-items-center g-5">
+          <!-- Phone Mockup -->
+          <div class="col-lg-5 text-center order-2 order-lg-1">
+            <div class="phone-mockup-wrapper">
+              <div class="phone-frame">
+                <img
+                  src="assets/v2/screen.png"
+                  alt="App Screenshot"
+                  class="app-screenshot"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Features List -->
+          <div class="col-lg-7 order-1 order-lg-2">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="glass-card d-flex align-items-start">
+                  <div class="feature-icon me-4 flex-shrink-0">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                  </div>
+                  <div>
+                    <h4 class="fw-bold mb-2">Cashback Otomatis</h4>
+                    <p class="text-muted mb-0">
+                      Sistem otomatis yang langsung transfer cashback ke saldo
+                      anda
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="glass-card d-flex align-items-start">
+                  <div class="feature-icon me-4 flex-shrink-0">
+                    <i class="bi bi-shop-window"></i>
+                  </div>
+                  <div>
+                    <h4 class="fw-bold mb-2">Multi Platform</h4>
+                    <p class="text-muted mb-0">
+                      Terintegrasi dengan Marketplace, PPOB(Payment Point Online
+                      Bank), Travel, dan Marketplace UMKM Lokal
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="glass-card d-flex align-items-start">
+                  <div class="feature-icon me-4 flex-shrink-0">
+                    <i class="bi bi-share-fill"></i>
+                  </div>
+                  <div>
+                    <h4 class="fw-bold mb-2">Program Afiliasi</h4>
+                    <p class="text-muted mb-0">
+                      Ajak teman dan dapatkan komisi hingga jutaan rupiah dari
+                      setiap referral yang join
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="fitur" class="py-5" style="background: #fafafa">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Fitur Lengkap</h2>
+          <p class="section-subtitle">
+            Semua yang Anda butuhkan dalam satu aplikasi
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-bag-check-fill"></i>
+              <h5 class="fw-bold mb-2">Cashback Produk</h5>
+              <p class="text-muted mb-0">
+                Cashback hingga 15% dari setiap pembelian produk melalui link
+                afiliasi
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-person-check-fill"></i>
+              <h5 class="fw-bold mb-2">Cashback Member</h5>
+              <p class="text-muted mb-0">
+                Bonus cashback tambahan untuk member aktif dengan sistem reward
+                berjenjang
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-credit-card-2-front-fill"></i>
+              <h5 class="fw-bold mb-2">PPOB</h5>
+              <p class="text-muted mb-0">
+                Bayar tagihan listrik, air, telepon dan dapatkan cashback dari
+                setiap transaksi
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-airplane-fill"></i>
+              <h5 class="fw-bold mb-2">Travel</h5>
+              <p class="text-muted mb-0">
+                Booking hotel, tiket pesawat, dan paket wisata dengan cashback
+                menarik
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-shop"></i>
+              <h5 class="fw-bold mb-2">Marketplace UMKM</h5>
+              <p class="text-muted mb-0">
+                Dukung UMKM lokal sambil mendapatkan cashback dari setiap
+                pembelian
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <i class="bi bi-shield-check"></i>
+              <h5 class="fw-bold mb-2">Aman & Terpercaya</h5>
+              <p class="text-muted mb-0">
+                Transaksi aman dengan enkripsi tingkat bank dan jaminan uang
+                kembali
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="cara" class="steps-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Bagaimana Cara Mendapatkn Cashback?</h2>
+          <p class="section-subtitle">
+            4 langkah mudah untuk mulai dapat cashback
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Step 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card">
+              <div class="step-icon">
+                <i class="bi bi-clipboard-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Salin Link</h5>
+              <p class="text-muted">
+                Copy link produk dari marketplace favorit Anda
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card">
+              <div class="step-icon">
+                <i class="bi bi-clipboard-check-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Paste di Aplikasi</h5>
+              <p class="text-muted">
+                Paste link di aplikasi Link Cashback untuk verifikasi
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card">
+              <div class="step-icon">
+                <i class="bi bi-cart-check-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Belanja Normal</h5>
+              <p class="text-muted">
+                Klik tombol lanjut untuk berbelanja seperti biasa
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card">
+              <div class="step-icon">
+                <i class="bi bi-cash-stack"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Terima Cashback</h5>
+              <p class="text-muted">
+                Cashback otomatis masuk ke saldo dalam 24 jam
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="harga" class="cta-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="price-card text-center">
+              <h3 class="fw-bold mb-4">Affiliate Program</h3>
+              <p class="text-muted mb-4">
+                Referensikan Link Cashback dan Dapatkan
+                <strong>
+                  Cashback dari Belanja Tim, Cashback Referensi Member
+                </strong>
+                dan <strong>Reword hingga Millyaran Rupiah</strong>
+              </p>
+
+              <div class="mb-4">
+                <p class="text-muted mb-2">Cukup Dengan</p>
+                <div class="price-old mb-2">Rp 499.000</div>
+                <div class="price-new">Rp 299.000</div>
+                <p class="text-muted mt-3">
+                  <strong>
+                    Kamu Akan Mendapatkan Semua Fitur Aplikasi Link Cashback
+                  </strong>
+                </p>
+                <div class="d-flex gap-3 flex-wrap justify-content-center mt-4">
+                  <a
+                    href="register_page.html"
+                    style="
+                      background-color: #b30000;
+                      color: white;
+                      padding: 12px 28px;
+                      border-radius: 8px;
+                      text-decoration: none;
+                      display: inline-flex;
+                      align-items: center;
+                      font-weight: 600;
+                      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                      transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.backgroundColor='#990000'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.3)';"
+                    onmouseout="this.style.backgroundColor='#b30000'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';"
+                  >
+                    <i
+                      class="bi bi-rocket-takeoff me-2"
+                      style="color: white"
+                    ></i
+                    >DAFTAR SEKARANG
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2 store-buttons"
+              >
+                <img
+                  src="assets/v2/google-play.svg"
+                  type="image/svg+xml"
+                  alt="Google Play"
+                  class="store-btn"
+                />
+                <img
+                  src="assets/v2/appstore.svg"
+                  alt="App Store"
+                  class="store-btn"
+                />
+              </div>
+
+              <!-- <div class="d-flex justify-content-center gap-4 text-muted small">
+                <div>
+                  <i class="bi bi-check-circle-fill text-success me-1"></i> 30
+                  Hari Garansi
+                </div>
+                <div>
+                  <i class="bi bi-check-circle-fill text-success me-1"></i>
+                  Support 24/7
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+      <div class="container">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold mb-3">
+              <img
+                src="assets/img/testimonials/logow.png"
+                alt="Logo"
+                height="35"
+              />
+            </h5>
+            <p class="text-white-50">
+              Platform terdepan untuk mendapatkan cashback dari setiap pembelian
+              online Anda. Bergabunglah dengan ribuan pengguna yang sudah
+              merasakan manfaatnya.
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <h6 class="fw-bold mb-3">Menu</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#tentang">Tentang Kami</a></li>
+              <li class="mb-2"><a href="#fitur">Fitur</a></li>
+              <li class="mb-2"><a href="#cara">Cara Kerja</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <h6 class="fw-bold mb-3">Support</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#">FAQ</a></li>
+              <li class="mb-2"><a href="#">Bantuan</a></li>
+              <li class="mb-2"><a href="#">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-4">
+            <h6 class="fw-bold mb-3">Ikuti Kami</h6>
+            <div>
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border-color: rgba(255, 255, 255, 0.1)" />
+
+        <div class="text-center text-white-50 py-3">
+          <small>© 2025 Link Cashback. All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar-modern");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>
