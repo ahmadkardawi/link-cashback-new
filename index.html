@@ -30,13 +30,18 @@
         box-sizing: border-box;
       }
 
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
-        overflow-x: hidden;
         background: var(--light);
       }
 
-      /* Navbar Modern */
       .navbar-modern {
         backdrop-filter: blur(20px);
         background: rgba(255, 255, 255, 0.8);
@@ -59,6 +64,7 @@
         padding: 0.5rem 1rem !important;
         transition: color 0.3s;
       }
+
       .btn-login {
         display: inline-flex;
         align-items: center;
@@ -103,6 +109,7 @@
         overflow: hidden;
         background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
         padding: 60px 0;
+        width: 100%;
       }
 
       .hero-section::before {
@@ -155,6 +162,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        max-width: 100%;
       }
 
       .hero-image {
@@ -185,6 +193,7 @@
         padding: 1rem 1.5rem;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         animation: floatCard 3s ease-in-out infinite;
+        max-width: 200px;
       }
 
       @keyframes floatCard {
@@ -246,6 +255,8 @@
       .about-section {
         padding: 100px 0;
         background: linear-gradient(180deg, var(--light) 0%, #fff 100%);
+        width: 100%;
+        overflow: hidden;
       }
 
       /* Phone Mockup */
@@ -253,6 +264,7 @@
         position: relative;
         display: inline-block;
         animation: phoneFloat 3s ease-in-out infinite;
+        max-width: 100%;
       }
 
       @keyframes phoneFloat {
@@ -268,13 +280,9 @@
       .phone-frame {
         position: relative;
         width: 300px;
+        max-width: 100%;
         height: 600px;
-        /* background: #1f1f1f; */
         border-radius: 40px;
-        /* padding: 12px; */
-        /* box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3),
-          0 0 0 1px rgba(255, 255, 255, 0.1),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.05); */
         margin: 0 auto;
       }
 
@@ -344,6 +352,7 @@
         color: white;
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
+        flex-shrink: 0;
       }
 
       /* Feature Cards */
@@ -372,42 +381,9 @@
       .steps-section {
         padding: 100px 0;
         background: white;
-      }
-      /*
-      .step-card {
-        text-align: center;
-        position: relative;
-        padding: 2rem;
-      }
-
-      .step-number {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin: 0 auto 1.5rem;
-        box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
-      }
-
-      .step-line {
-        position: absolute;
-        top: 35px;
-        left: 50%;
         width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
-        z-index: -1;
-      } */
+        overflow: hidden;
+      }
 
       .step-card {
         background: #ffffff;
@@ -427,7 +403,7 @@
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        background: #b30000; /* warna utama */
+        background: #b30000;
         color: white;
         display: flex;
         align-items: center;
@@ -455,6 +431,7 @@
         );
         position: relative;
         overflow: hidden;
+        width: 100%;
       }
 
       .cta-section::before {
@@ -475,6 +452,7 @@
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
         position: relative;
         z-index: 2;
+        max-width: 100%;
       }
 
       .price-old {
@@ -494,6 +472,8 @@
         background: var(--dark);
         color: white;
         padding: 60px 0 30px;
+        width: 100%;
+        overflow: hidden;
       }
 
       .footer-modern a {
@@ -524,31 +504,45 @@
       }
 
       .store-buttons {
-        gap: 10px; /* jarak antar tombol */
+        gap: 10px;
+        flex-wrap: wrap;
       }
 
       .store-btn {
         width: 250px !important;
         height: 80px !important;
         transition: transform 0.2s ease;
+        max-width: 100%;
       }
 
       .store-btn:hover {
         transform: scale(1.05);
       }
 
-      /*
-
-
       /* Responsive */
       @media (max-width: 768px) {
+        .container {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .row {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        [class*="col-"] {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
         @keyframes floatCard {
           0%,
           100% {
-            transform: scale(0.6) translateY(0px);
+            transform: scale(0.7) translateY(0px);
           }
           50% {
-            transform: scale(0.6) translateY(-10px);
+            transform: scale(0.7) translateY(-10px);
           }
         }
 
@@ -562,13 +556,9 @@
         }
 
         .floating-card {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(10px);
-          border-radius: 16px;
-          padding: 1rem 1.5rem;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-          animation: floatCard 3s ease-in-out infinite;
+          padding: 0.75rem 1rem;
+          max-width: 160px;
+          font-size: 0.85rem;
         }
 
         .floating-card-1 {
@@ -579,12 +569,8 @@
 
         .floating-card-2 {
           top: 2%;
-          left: 5%;
+          left: 0;
           animation-delay: 1s;
-        }
-
-        .step-line {
-          display: none;
         }
 
         .about-section,
@@ -634,15 +620,18 @@
           height: 50px;
           font-size: 1.25rem;
         }
+
         .store-buttons {
           flex-direction: column;
-          gap: 5px; /* rapatkan jarak di mobile */
+          gap: 5px;
+          align-items: center;
         }
 
         .store-btn {
-          width: 50vw !important;
-          height: 60px !important; /* kecilkan sedikit */
+          width: 200px !important;
+          height: 60px !important;
         }
+
         .step-card {
           padding: 20px 15px;
         }
@@ -651,6 +640,26 @@
           width: 60px;
           height: 60px;
           font-size: 26px;
+        }
+
+        .price-card {
+          padding: 2rem 1.5rem;
+        }
+
+        .price-new {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-image-wrapper {
+          padding: 0 10px;
+        }
+
+        .btn-primary-modern,
+        .btn-outline-modern {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.9rem;
         }
       }
 
@@ -745,16 +754,7 @@
                 <i class="bi bi-rocket-takeoff me-2"></i
                 ><strong>DAFTAR SEKARANG</strong>
               </a>
-              <!-- <a href="#cara" class="btn btn-outline-modern">
-                Pelajari Lebih Lanjut
-              </a> -->
             </div>
-            <!-- <div class="mt-4">
-              <small class="text-white-50">
-                <i class="bi bi-check-circle-fill text-white me-2"></i>
-                Gratis biaya admin • Pencairan instan
-              </small>
-            </div> -->
           </div>
           <div class="col-lg-6">
             <div class="hero-image-wrapper">
@@ -762,30 +762,29 @@
                 src="assets/v2/people1.png"
                 class="hero-image"
                 style="border-radius: 20px"
-              />
-              <!-- <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=600&fit=crop"
                 alt="Hero"
-                class="hero-image"
-                style="max-width: 500px; border-radius: 20px"
-              /> -->
+              />
 
               <div class="floating-card floating-card-1">
                 <div class="d-flex align-items-center">
-                  <i class="bi bi-cash-coin fs-3 text-success me-3"></i>
+                  <i class="bi bi-cash-coin fs-4 text-success me-2"></i>
                   <div>
-                    <small class="text-muted d-block">Cashback Hari Ini</small>
-                    <strong class="fs-5">Rp 2.450.000</strong>
+                    <small class="text-muted d-block" style="font-size: 0.75rem"
+                      >Cashback Hari Ini</small
+                    >
+                    <strong style="font-size: 1rem">Rp 2.450.000</strong>
                   </div>
                 </div>
               </div>
 
               <div class="floating-card floating-card-2">
                 <div class="d-flex align-items-center">
-                  <i class="bi bi-people-fill fs-3 text-primary me-3"></i>
+                  <i class="bi bi-people-fill fs-4 text-primary me-2"></i>
                   <div>
-                    <small class="text-muted d-block">Total Member</small>
-                    <strong class="fs-5">3.049+</strong>
+                    <small class="text-muted d-block" style="font-size: 0.75rem"
+                      >Total Member</small
+                    >
+                    <strong style="font-size: 1rem">3.049+</strong>
                   </div>
                 </div>
               </div>
@@ -824,7 +823,7 @@
             <div class="row g-4">
               <div class="col-12">
                 <div class="glass-card d-flex align-items-start">
-                  <div class="feature-icon me-4 flex-shrink-0">
+                  <div class="feature-icon me-4">
                     <i class="bi bi-lightning-charge-fill"></i>
                   </div>
                   <div>
@@ -839,7 +838,7 @@
 
               <div class="col-12">
                 <div class="glass-card d-flex align-items-start">
-                  <div class="feature-icon me-4 flex-shrink-0">
+                  <div class="feature-icon me-4">
                     <i class="bi bi-shop-window"></i>
                   </div>
                   <div>
@@ -854,7 +853,7 @@
 
               <div class="col-12">
                 <div class="glass-card d-flex align-items-start">
-                  <div class="feature-icon me-4 flex-shrink-0">
+                  <div class="feature-icon me-4">
                     <i class="bi bi-share-fill"></i>
                   </div>
                   <div>
@@ -1080,17 +1079,6 @@
                   class="store-btn"
                 />
               </div>
-
-              <!-- <div class="d-flex justify-content-center gap-4 text-muted small">
-                <div>
-                  <i class="bi bi-check-circle-fill text-success me-1"></i> 30
-                  Hari Garansi
-                </div>
-                <div>
-                  <i class="bi bi-check-circle-fill text-success me-1"></i>
-                  Support 24/7
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -1114,15 +1102,6 @@
               e-commerce dengan konsumen, juga mempermudah transaksi online dan
               memberikan cashback bagi pengguna.
             </p>
-          </div>
-
-          <div class="col-lg-2 col-md-4">
-            <h6 class="fw-bold mb-3">Menu</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2"><a href="#tentang">Tentang Kami</a></li>
-              <li class="mb-2"><a href="#fitur">Fitur</a></li>
-              <li class="mb-2"><a href="#cara">Cara Kerja</a></li>
-            </ul>
           </div>
 
           <div class="col-lg-2 col-md-4">
@@ -1151,7 +1130,9 @@
         <hr style="border-color: rgba(255, 255, 255, 0.1)" />
 
         <div class="text-center text-white-50 py-3">
-          <small>© 2025 Link Cashback. All rights reserved.</small>
+          <small
+            >© 2025 PT Berkat Inovasi Nusantara. All rights reserved.</small
+          >
         </div>
       </div>
     </footer>

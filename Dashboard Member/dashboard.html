@@ -12,7 +12,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"></script>
     <style>
       * {
         margin: 0;
@@ -37,16 +36,6 @@
         font-weight: 900;
         font-size: 24px;
         color: white;
-      }
-
-      .navbar-dashboard .nav-link {
-        color: rgba(255, 255, 255, 0.8) !important;
-        transition: color 0.3s ease;
-      }
-
-      .navbar-dashboard .nav-link:hover,
-      .navbar-dashboard .nav-link.active {
-        color: white !important;
       }
 
       .logout-btn {
@@ -209,16 +198,6 @@
         background: #f0f0f0;
       }
 
-      .qr-code-section {
-        text-align: center;
-      }
-
-      .qr-code-section img {
-        max-width: 150px;
-        border-radius: 10px;
-        border: 3px solid white;
-      }
-
       /* EARNINGS GRID */
       .earnings-grid {
         margin-bottom: 30px;
@@ -334,9 +313,6 @@
         box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
       }
 
-      .btn-withdraw:active {
-        transform: translateY(0);
-      }
       .generasi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -476,7 +452,7 @@
         background: #e0e0e0;
       }
 
-      /* MODAL QR CODE */
+      /* MODAL */
       .modal-header {
         background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
         color: white;
@@ -487,7 +463,7 @@
         filter: brightness(0) invert(1);
       }
 
-      /* ===== Status & Rank Cards ===== */
+      /* Status & Rank Cards */
       .status-card {
         transition: 0.2s;
       }
@@ -509,6 +485,7 @@
         text-align: center;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         transition: 0.2s;
+        cursor: pointer;
       }
 
       .rank-card:hover {
@@ -556,317 +533,13 @@
           padding: 12px 15px;
         }
 
-        .navbar-dashboard .navbar-brand {
-          font-size: 18px;
-        }
-
         .card-stat {
           padding: 15px;
-          margin-bottom: 15px;
-        }
-
-        .stat-icon {
-          font-size: 24px;
-        }
-
-        .stat-value {
-          font-size: 18px;
-        }
-
-        .stat-label {
-          font-size: 12px;
-        }
-
-        .generasi-grid {
-          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-          gap: 10px;
-        }
-
-        .generasi-card {
-          padding: 10px;
-        }
-
-        .generasi-card .value {
-          font-size: 18px;
-        }
-
-        .generasi-card .label {
-          font-size: 11px;
-        }
-
-        .profile-card {
-          padding: 20px;
         }
 
         .profile-header {
           flex-direction: column;
           text-align: center;
-          gap: 15px;
-        }
-
-        .profile-avatar {
-          width: 60px;
-          height: 60px;
-          font-size: 30px;
-        }
-
-        .profile-info h3 {
-          font-size: 18px;
-        }
-
-        .profile-info p {
-          font-size: 12px;
-        }
-
-        .referral-code {
-          flex-direction: column;
-          gap: 10px;
-          padding: 12px;
-        }
-
-        .referral-code .code {
-          font-size: 12px;
-          word-break: break-all;
-        }
-
-        .btn-copy {
-          width: 100%;
-          padding: 10px;
-          font-size: 12px;
-        }
-
-        .filter-row {
-          grid-template-columns: 1fr;
-        }
-
-        .btn-filter {
-          width: 100%;
-          padding: 12px;
-        }
-
-        .nav-tabs {
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        .nav-tabs .nav-link {
-          padding: 10px 15px;
-          font-size: 13px;
-          white-space: nowrap;
-        }
-
-        .table-responsive-custom {
-          font-size: 13px;
-        }
-
-        .table-responsive-custom th,
-        .table-responsive-custom td {
-          padding: 10px 8px;
-        }
-
-        .badge-gen {
-          font-size: 11px;
-          padding: 4px 8px;
-        }
-
-        .withdraw-section {
-          padding: 15px;
-        }
-
-        .withdraw-info {
-          margin-bottom: 15px;
-        }
-
-        .btn-withdraw {
-          font-size: 13px;
-          padding: 10px 16px;
-        }
-      }
-
-      h4 {
-        font-size: 18px !important;
-        margin-bottom: 15px !important;
-      }
-
-      h5 {
-        font-size: 15px !important;
-      }
-
-      .row > div {
-        margin-bottom: 15px;
-      }
-
-      .d-flex.gap-3 {
-        gap: 1rem !important;
-        flex-wrap: wrap;
-      }
-
-      @media (max-width: 576px) {
-        .dashboard-container {
-          padding: 10px 8px;
-        }
-
-        .navbar-dashboard {
-          padding: 10px 10px;
-        }
-
-        .navbar-dashboard .navbar-brand {
-          font-size: 16px;
-        }
-
-        .logout-btn {
-          font-size: 12px;
-          padding: 6px 12px;
-        }
-
-        .card-stat {
-          padding: 12px;
-        }
-
-        .stat-icon {
-          font-size: 20px;
-        }
-
-        .stat-value {
-          font-size: 16px;
-        }
-
-        .stat-label {
-          font-size: 11px;
-        }
-
-        .generasi-grid {
-          grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-          gap: 8px;
-        }
-
-        .generasi-card {
-          padding: 8px;
-        }
-
-        .generasi-card .value {
-          font-size: 16px;
-        }
-
-        .generasi-card .label {
-          font-size: 10px;
-        }
-
-        .profile-card {
-          padding: 15px;
-          margin-bottom: 20px;
-        }
-
-        .profile-avatar {
-          width: 50px;
-          height: 50px;
-          font-size: 25px;
-        }
-
-        .profile-info h3 {
-          font-size: 16px;
-        }
-
-        .profile-info p {
-          font-size: 11px;
-          margin-bottom: 5px;
-        }
-
-        .referral-code {
-          padding: 10px;
-        }
-
-        .referral-code .code {
-          font-size: 11px;
-          word-break: break-all;
-        }
-
-        .btn-copy {
-          padding: 8px 12px;
-          font-size: 11px;
-        }
-
-        .table-responsive-custom {
-          font-size: 12px;
-          overflow-x: auto;
-        }
-
-        .table-responsive-custom table {
-          min-width: 400px;
-        }
-
-        .table-responsive-custom th,
-        .table-responsive-custom td {
-          padding: 8px 6px;
-        }
-
-        .badge-gen {
-          font-size: 10px;
-          padding: 3px 6px;
-        }
-
-        .filter-section {
-          padding: 12px;
-        }
-
-        .filter-row {
-          gap: 10px;
-        }
-
-        .filter-row label {
-          font-size: 12px;
-          margin-bottom: 5px;
-        }
-
-        .filter-row input,
-        .filter-row select {
-          padding: 8px 10px;
-          font-size: 12px;
-        }
-
-        .btn-filter {
-          font-size: 12px;
-          padding: 8px 12px;
-        }
-
-        .nav-tabs {
-          margin-bottom: 20px;
-          border-bottom: 2px solid #e0e0e0;
-        }
-
-        .nav-tabs .nav-link {
-          padding: 8px 12px;
-          font-size: 12px;
-          white-space: nowrap;
-          font-weight: 500;
-        }
-
-        h4 {
-          font-size: 16px !important;
-          margin-bottom: 12px !important;
-        }
-
-        h5 {
-          font-size: 13px !important;
-          margin-bottom: 10px !important;
-        }
-
-        .referral-section {
-          padding: 12px;
-        }
-
-        .referral-section h5 {
-          margin-bottom: 10px;
-        }
-
-        .row > div {
-          margin-bottom: 12px;
-        }
-
-        .container-fluid {
-          padding-left: 8px;
-          padding-right: 8px;
         }
       }
     </style>
@@ -877,17 +550,9 @@
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <!-- Kiri: Logo -->
         <div class="d-flex align-items-center">
-          <img
-            src="images/logo.png"
-            alt="Link logo"
-            width="100px"
-            style="margin-bottom: 18px"
-          />
+          <div class="navbar-brand">🔗 Link Cashback</div>
         </div>
-
-        <!-- Kanan: Logout -->
         <div>
           <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
@@ -927,9 +592,9 @@
               <div class="profile-header">
                 <div class="profile-avatar">👤</div>
                 <div class="profile-info">
-                  <h3 id="profileName">BUDI</h3>
-                  <p>UserName: <span id="profileId">BUDI1234</span></p>
-                  <p>Email: <span id="profileEmail">budi@gmail.com</span></p>
+                  <h3 id="profileName">Loading...</h3>
+                  <p>Email: <span id="profileEmail">Loading...</span></p>
+                  <p>Role: <span id="profileRole">Loading...</span></p>
                 </div>
               </div>
 
@@ -937,28 +602,28 @@
                 <h5 style="margin-bottom: 15px; font-weight: 700">
                   🔗 Link Referral Saya
                 </h5>
-
                 <div class="referral-code">
                   <div class="code" id="referralLink">
-                    https://linkcashback.com/ref/ALICE123
+                    https://linkcashback.com/ref/...
                   </div>
                   <button class="btn-copy" onclick="copyReferralLink()">
                     📋 Salin
                   </button>
                 </div>
-
                 <div class="row">
                   <div class="col-md-12">
                     <h6 style="margin-bottom: 10px; font-size: 13px">
                       Statistik Referral
                     </h6>
                     <p style="margin-bottom: 8px">
-                      ✅ Total Referral: <strong>25 orang</strong>
+                      ✅ Total Referral:
+                      <strong id="totalReferrals">0 orang</strong>
                     </p>
                     <p style="margin-bottom: 8px">
-                      💰 Komisi Pendaftaran: <strong>Rp 2.500.000</strong>
+                      💰 Komisi Pendaftaran:
+                      <strong id="regCommission">Rp 0</strong>
                     </p>
-                    <p>🎁 Bonus Tim: <strong>Rp 5.000.000</strong></p>
+                    <p>🎁 Bonus Tim: <strong id="teamBonus">Rp 0</strong></p>
                   </div>
                 </div>
               </div>
@@ -975,14 +640,11 @@
                     <div class="earnings-icon total">💰</div>
                     <div class="earnings-info">
                       <div class="earnings-label">Total Pendapatan</div>
-                      <div class="earnings-amount" id="totalIncome">
-                        Rp 7.500.000
-                      </div>
+                      <div class="earnings-amount" id="totalIncome">Rp 0</div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class="earnings-card">
                   <div class="earnings-header">
@@ -993,13 +655,12 @@
                         class="earnings-amount pending-text"
                         id="pendingIncome"
                       >
-                        Rp 500.000
+                        Rp 0
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class="earnings-card">
                   <div class="earnings-header">
@@ -1010,7 +671,7 @@
                         class="earnings-amount success-text"
                         id="successIncome"
                       >
-                        Rp 7.000.000
+                        Rp 0
                       </div>
                     </div>
                   </div>
@@ -1035,7 +696,7 @@
                           font-weight: 700;
                           font-size: 18px;
                         "
-                        >Rp 7.000.000</span
+                        >Rp 0</span
                       >
                     </p>
                     <p style="margin-bottom: 0; font-size: 13px; color: #999">
@@ -1087,9 +748,7 @@
             <h4 style="margin: 30px 0 20px; font-weight: 900">
               👥 Generasi Tim (1-10)
             </h4>
-            <div class="generasi-grid" id="generasiGrid">
-              <!-- Akan diisi dengan JavaScript -->
-            </div>
+            <div class="generasi-grid" id="generasiGrid"></div>
           </div>
 
           <!-- TEAM TAB -->
@@ -1097,7 +756,6 @@
             <h4 style="margin-bottom: 20px; font-weight: 900">
               👥 Informasi Tim Saya
             </h4>
-
             <div class="table-responsive-custom">
               <table class="table">
                 <thead>
@@ -1109,9 +767,7 @@
                     <th>Total Komisi</th>
                   </tr>
                 </thead>
-                <tbody id="teamTableBody">
-                  <!-- Akan diisi dengan JavaScript -->
-                </tbody>
+                <tbody id="teamTableBody"></tbody>
               </table>
             </div>
 
@@ -1148,8 +804,6 @@
             <h4 style="margin-bottom: 20px; font-weight: 900">
               💰 Riwayat Penghasilan Detail
             </h4>
-
-            <!-- FILTER -->
             <div class="filter-section">
               <div class="filter-row">
                 <div class="form-group">
@@ -1159,8 +813,6 @@
                     <option value="1">Generasi 1</option>
                     <option value="2">Generasi 2</option>
                     <option value="3">Generasi 3</option>
-                    <option value="4">Generasi 4</option>
-                    <option value="5">Generasi 5</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -1179,14 +831,6 @@
                     class="form-control"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="filterJenis">Jenis Komisi</label>
-                  <select id="filterJenis" class="form-control">
-                    <option value="">Semua Jenis</option>
-                    <option value="registration">Komisi Pendaftaran</option>
-                    <option value="cashback">Komisi Cashback</option>
-                  </select>
-                </div>
                 <button class="btn-filter" onclick="filterEarnings()">
                   🔍 Filter
                 </button>
@@ -1195,8 +839,6 @@
                 </button>
               </div>
             </div>
-
-            <!-- TABLE -->
             <div class="table-responsive-custom">
               <table class="table">
                 <thead>
@@ -1206,44 +848,33 @@
                     <th>Member</th>
                     <th>Jenis Komisi</th>
                     <th>Nominal</th>
-                    <th>Keterangan</th>
                   </tr>
                 </thead>
-                <tbody id="earningsTableBody">
-                  <!-- Akan diisi dengan JavaScript -->
-                </tbody>
+                <tbody id="earningsTableBody"></tbody>
               </table>
             </div>
           </div>
 
+          <!-- WITHDRAW HISTORY TAB -->
           <div id="withdraw-history" class="tab-pane fade">
             <h4>🏦 Riwayat Penarikan</h4>
             <div class="filter-section">
               <div class="filter-row">
                 <div>
-                  <label>Tanggal Awal</label
-                  ><input
+                  <label>Tanggal Awal</label>
+                  <input
                     type="date"
                     id="filterTanggalAwalWD"
                     class="form-control"
                   />
                 </div>
                 <div>
-                  <label>Tanggal Akhir</label
-                  ><input
+                  <label>Tanggal Akhir</label>
+                  <input
                     type="date"
                     id="filterTanggalAkhirWD"
                     class="form-control"
                   />
-                </div>
-                <div>
-                  <label>Status</label>
-                  <select id="filterStatusWD" class="form-control">
-                    <option value="">Semua</option>
-                    <option value="success">Berhasil</option>
-                    <option value="pending">Pending</option>
-                    <option value="failed">Gagal</option>
-                  </select>
                 </div>
                 <button class="btn-filter" onclick="filterWithdrawHistory()">
                   🔍 Filter
@@ -1272,32 +903,18 @@
           </div>
         </div>
 
-        <div
-          class="modal fade"
-          id="rankDetailModal"
-          tabindex="-1"
-          aria-labelledby="rankDetailLabel"
-          aria-hidden="true"
-        >
+        <!-- MODAL RANK DETAIL -->
+        <div class="modal fade" id="rankDetailModal" tabindex="-1">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-              <div
-                class="modal-header"
-                style="
-                  background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
-                  color: white;
-                  border: none;
-                "
-              >
-                <h5 class="modal-title" id="rankDetailLabel">
+              <div class="modal-header">
+                <h5 class="modal-title">
                   📊 User Rank <span id="rankTitle">Bronze</span>
                 </h5>
                 <button
                   type="button"
                   class="btn-close"
                   data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style="filter: brightness(0) invert(1)"
                 ></button>
               </div>
               <div class="modal-body">
@@ -1307,14 +924,12 @@
                       <tr>
                         <th>No.</th>
                         <th>Username</th>
-                        <th>Nama Lengkap</th>
-                        <th>No. WhatsApp</th>
+                        <th>Nama</th>
+                        <th>WhatsApp</th>
                         <th>Sponsor</th>
                       </tr>
                     </thead>
-                    <tbody id="rankDetailTableBody">
-                      <!-- Akan diisi dengan JavaScript -->
-                    </tbody>
+                    <tbody id="rankDetailTableBody"></tbody>
                   </table>
                 </div>
               </div>
@@ -1326,701 +941,611 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-      // HAPUS SEMUA KODE DI BAGIAN <script> YANG LAMA
-      // DAN GANTI DENGAN KODE INI
-
-      // Mock Data
-      const userData = {
-        id: "BUDI1234",
-        name: "BUDI",
-        email: "budi@gmail.com",
-        referralCode: "BUDI1234",
-        totalEarnings: 7500000,
-        cashbackComission: 5000000,
-        registrationComission: 2500000,
-        generasi: {
-          1: 20,
-          2: 15,
-          3: 10,
-          4: 10,
-          5: 8,
-          6: 10,
-          7: 11,
-          8: 13,
-          9: 2,
-          10: 5,
+      // 🎭 DATA DUMMY BERDASARKAN USER
+      const DUMMY_DATA = {
+        admin: {
+          totalReferrals: 50,
+          regCommission: 5000000,
+          teamBonus: 10000000,
+          totalIncome: 15000000,
+          pendingIncome: 1000000,
+          successIncome: 14000000,
+          availableBalance: 14000000,
+          cashbackComission: 8000000,
+          registrationComission: 5000000,
+          generasi: {
+            1: 25,
+            2: 18,
+            3: 15,
+            4: 12,
+            5: 10,
+            6: 8,
+            7: 6,
+            8: 4,
+            9: 2,
+            10: 1,
+          },
+          userCount: 50,
+          partnerCount: 51,
+        },
+        user123: {
+          totalReferrals: 25,
+          regCommission: 2500000,
+          teamBonus: 5000000,
+          totalIncome: 7500000,
+          pendingIncome: 500000,
+          successIncome: 7000000,
+          availableBalance: 7000000,
+          cashbackComission: 5000000,
+          registrationComission: 2500000,
+          generasi: {
+            1: 15,
+            2: 10,
+            3: 8,
+            4: 6,
+            5: 5,
+            6: 3,
+            7: 2,
+            8: 1,
+            9: 0,
+            10: 0,
+          },
+          userCount: 25,
+          partnerCount: 25,
+        },
+        member1: {
+          totalReferrals: 10,
+          regCommission: 1000000,
+          teamBonus: 2000000,
+          totalIncome: 3000000,
+          pendingIncome: 300000,
+          successIncome: 2700000,
+          availableBalance: 2700000,
+          cashbackComission: 2000000,
+          registrationComission: 1000000,
+          generasi: {
+            1: 8,
+            2: 5,
+            3: 3,
+            4: 2,
+            5: 1,
+            6: 0,
+            7: 0,
+            8: 0,
+            9: 0,
+            10: 0,
+          },
+          userCount: 10,
+          partnerCount: 9,
         },
       };
 
-      const earningsData = [
+      const EARNINGS_DATA = [
         {
-          tanggal: "2024-01-15",
+          tanggal: "2024-11-08",
           generasi: 1,
-          member: "Budi Santoso",
+          member: "Ahmad Wijaya",
           jenis: "registration",
           nominal: 100000,
-          keterangan: "Komisi pendaftaran direct",
         },
         {
-          tanggal: "2024-01-16",
+          tanggal: "2024-11-07",
           generasi: 2,
-          member: "Citra Dewi",
+          member: "Budi Santoso",
           jenis: "cashback",
           nominal: 250000,
-          keterangan: "Komisi cashback pembelian",
         },
         {
-          tanggal: "2024-01-17",
+          tanggal: "2024-11-06",
           generasi: 1,
-          member: "Dedi Gunawan",
+          member: "Citra Dewi",
           jenis: "registration",
           nominal: 100000,
-          keterangan: "Komisi pendaftaran direct",
         },
         {
-          tanggal: "2024-01-18",
+          tanggal: "2024-11-05",
           generasi: 3,
-          member: "Eka Saputra",
+          member: "Dedi Gunawan",
           jenis: "cashback",
           nominal: 150000,
-          keterangan: "Komisi cashback pembelian",
         },
         {
-          tanggal: "2024-01-19",
+          tanggal: "2024-11-04",
           generasi: 1,
-          member: "Fiona Lestari",
+          member: "Eka Saputra",
           jenis: "registration",
           nominal: 100000,
-          keterangan: "Komisi pendaftaran direct",
         },
         {
-          tanggal: "2024-01-20",
+          tanggal: "2024-11-03",
           generasi: 2,
-          member: "Gita Maharani",
+          member: "Fiona Lestari",
           jenis: "cashback",
           nominal: 300000,
-          keterangan: "Komisi cashback pembelian",
+        },
+        {
+          tanggal: "2024-11-02",
+          generasi: 1,
+          member: "Gita Maharani",
+          jenis: "registration",
+          nominal: 100000,
+        },
+        {
+          tanggal: "2024-11-01",
+          generasi: 3,
+          member: "Hendra Kusuma",
+          jenis: "cashback",
+          nominal: 200000,
         },
       ];
 
-      const teamStatus = {
-        user: 10,
-        partner: 20,
-      };
-
-      const rankQualified = [
-        { name: "Bronze", count: 10, class: "rank-bronze" },
-        { name: "Silver", count: 20, class: "rank-silver" },
-        { name: "Gold", count: 10, class: "rank-gold" },
-        { name: "Platinum", count: 20, class: "rank-platinum" },
-        { name: "Diamond", count: 10, class: "rank-diamond" },
-      ];
-
-      const withdrawData = [
+      const WITHDRAW_DATA = [
         {
-          tanggal: "2024-01-25",
+          tanggal: "2024-11-05",
           nominal: 1000000,
           status: "success",
-          catatan: "Penarikan ke BCA - 1234",
+          catatan: "Penarikan ke BCA - 1234567890",
         },
         {
-          tanggal: "2024-02-10",
+          tanggal: "2024-10-25",
           nominal: 500000,
           status: "pending",
           catatan: "Menunggu verifikasi admin",
         },
         {
-          tanggal: "2024-03-01",
+          tanggal: "2024-10-15",
+          nominal: 750000,
+          status: "success",
+          catatan: "Penarikan ke Mandiri - 0987654321",
+        },
+        {
+          tanggal: "2024-10-05",
           nominal: 2000000,
           status: "failed",
           catatan: "Rekening tidak valid",
         },
-        {
-          tanggal: "2024-03-15",
-          nominal: 1500000,
-          status: "success",
-          catatan: "Penarikan ke Mandiri - 5678",
-        },
       ];
 
-      const usersByRank = {
+      const RANK_QUALIFIED = [
+        { name: "Bronze", count: 15, class: "rank-bronze" },
+        { name: "Silver", count: 22, class: "rank-silver" },
+        { name: "Gold", count: 12, class: "rank-gold" },
+        { name: "Platinum", count: 18, class: "rank-platinum" },
+        { name: "Diamond", count: 8, class: "rank-diamond" },
+      ];
+
+      const USERS_BY_RANK = {
         Bronze: [
           {
             no: 1,
-            username: "user001",
+            username: "bronze001",
             nama: "Ahmad Wijaya",
             wa: "081234567890",
             sponsor: "ADMIN001",
           },
           {
             no: 2,
-            username: "user002",
+            username: "bronze002",
             nama: "Budi Santoso",
             wa: "082345678901",
             sponsor: "ADMIN002",
           },
           {
             no: 3,
-            username: "user003",
+            username: "bronze003",
             nama: "Citra Dewi",
             wa: "083456789012",
             sponsor: "ADMIN001",
           },
           {
             no: 4,
-            username: "user004",
+            username: "bronze004",
             nama: "Dedi Gunawan",
             wa: "084567890123",
             sponsor: "ADMIN003",
           },
           {
             no: 5,
-            username: "user005",
+            username: "bronze005",
             nama: "Eka Saputra",
             wa: "085678901234",
             sponsor: "ADMIN002",
-          },
-          {
-            no: 6,
-            username: "user006",
-            nama: "Fiona Lestari",
-            wa: "086789012345",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 7,
-            username: "user007",
-            nama: "Gita Maharani",
-            wa: "087890123456",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 8,
-            username: "user008",
-            nama: "Hendra Kusuma",
-            wa: "088901234567",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 9,
-            username: "user009",
-            nama: "Indah Sari",
-            wa: "089012345678",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 10,
-            username: "user010",
-            nama: "Joko Prasetyo",
-            wa: "081123456789",
-            sponsor: "ADMIN003",
           },
         ],
         Silver: [
           {
             no: 1,
             username: "silver001",
-            nama: "Kris Ananda",
-            wa: "082234567890",
+            nama: "Fiona Lestari",
+            wa: "086789012345",
             sponsor: "ADMIN001",
           },
           {
             no: 2,
             username: "silver002",
-            nama: "Luna Amelia",
-            wa: "083334567890",
-            sponsor: "ADMIN002",
+            nama: "Gita Maharani",
+            wa: "087890123456",
+            sponsor: "ADMIN003",
           },
           {
             no: 3,
             username: "silver003",
-            nama: "Miko Kusuma",
-            wa: "084434567890",
-            sponsor: "ADMIN003",
+            nama: "Hendra Kusuma",
+            wa: "088901234567",
+            sponsor: "ADMIN002",
           },
           {
             no: 4,
             username: "silver004",
-            nama: "Nina Wijaya",
-            wa: "085534567890",
+            nama: "Indah Sari",
+            wa: "089012345678",
             sponsor: "ADMIN001",
           },
           {
             no: 5,
             username: "silver005",
-            nama: "Oscar Pratama",
-            wa: "086634567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 6,
-            username: "silver006",
-            nama: "Putri Azzahra",
-            wa: "087734567890",
+            nama: "Joko Prasetyo",
+            wa: "081123456789",
             sponsor: "ADMIN003",
-          },
-          {
-            no: 7,
-            username: "silver007",
-            nama: "Roni Hidayat",
-            wa: "088834567890",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 8,
-            username: "silver008",
-            nama: "Siti Nurhaliza",
-            wa: "089934567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 9,
-            username: "silver009",
-            nama: "Toni Hermawan",
-            wa: "081034567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 10,
-            username: "silver010",
-            nama: "Ulfa Handika",
-            wa: "082134567890",
-            sponsor: "ADMIN001",
           },
         ],
         Gold: [
           {
             no: 1,
             username: "gold001",
-            nama: "Vino Gunawan",
-            wa: "083234567890",
+            nama: "Kris Ananda",
+            wa: "082234567890",
             sponsor: "ADMIN002",
           },
           {
             no: 2,
             username: "gold002",
-            nama: "Wina Marlina",
-            wa: "084334567890",
+            nama: "Luna Amelia",
+            wa: "083334567890",
             sponsor: "ADMIN001",
           },
           {
             no: 3,
             username: "gold003",
-            nama: "Xander Lee",
-            wa: "085434567890",
+            nama: "Miko Kusuma",
+            wa: "084434567890",
             sponsor: "ADMIN003",
           },
           {
             no: 4,
             username: "gold004",
-            nama: "Yanti Suryani",
-            wa: "086534567890",
+            nama: "Nina Wijaya",
+            wa: "085534567890",
             sponsor: "ADMIN002",
           },
           {
             no: 5,
             username: "gold005",
-            nama: "Zaki Mubaraq",
-            wa: "087634567890",
+            nama: "Oscar Pratama",
+            wa: "086634567890",
             sponsor: "ADMIN001",
-          },
-          {
-            no: 6,
-            username: "gold006",
-            nama: "Alvin Rizki",
-            wa: "088734567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 7,
-            username: "gold007",
-            nama: "Bella Kusuma",
-            wa: "089834567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 8,
-            username: "gold008",
-            nama: "Chandra Wijaya",
-            wa: "081934567890",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 9,
-            username: "gold009",
-            nama: "Diana Amelia",
-            wa: "082034567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 10,
-            username: "gold010",
-            nama: "Eka Kusuma",
-            wa: "083134567890",
-            sponsor: "ADMIN002",
           },
         ],
         Platinum: [
           {
             no: 1,
             username: "platinum001",
-            nama: "Faisal Rahman",
-            wa: "084234567890",
-            sponsor: "ADMIN001",
+            nama: "Putri Azzahra",
+            wa: "087734567890",
+            sponsor: "ADMIN003",
           },
           {
             no: 2,
             username: "platinum002",
-            nama: "Gina Permata",
-            wa: "085334567890",
-            sponsor: "ADMIN003",
+            nama: "Roni Hidayat",
+            wa: "088834567890",
+            sponsor: "ADMIN002",
           },
           {
             no: 3,
             username: "platinum003",
-            nama: "Hanif Wijaya",
-            wa: "086434567890",
-            sponsor: "ADMIN002",
+            nama: "Siti Nurhaliza",
+            wa: "089934567890",
+            sponsor: "ADMIN001",
           },
           {
             no: 4,
             username: "platinum004",
-            nama: "Ika Suryanto",
-            wa: "087534567890",
-            sponsor: "ADMIN001",
+            nama: "Toni Hermawan",
+            wa: "081034567890",
+            sponsor: "ADMIN003",
           },
           {
             no: 5,
             username: "platinum005",
-            nama: "Jefri Kusuma",
-            wa: "088634567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 6,
-            username: "platinum006",
-            nama: "Karina Amelia",
-            wa: "089734567890",
+            nama: "Ulfa Handika",
+            wa: "082134567890",
             sponsor: "ADMIN002",
-          },
-          {
-            no: 7,
-            username: "platinum007",
-            nama: "Luthfi Rahman",
-            wa: "081834567890",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 8,
-            username: "platinum008",
-            nama: "Maya Sari",
-            wa: "082934567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 9,
-            username: "platinum009",
-            nama: "Noel Gunawan",
-            wa: "083034567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 10,
-            username: "platinum010",
-            nama: "Olivia Kusuma",
-            wa: "084134567890",
-            sponsor: "ADMIN001",
           },
         ],
         Diamond: [
           {
             no: 1,
             username: "diamond001",
-            nama: "Pandu Wijaya",
-            wa: "085234567890",
-            sponsor: "ADMIN003",
+            nama: "Vino Gunawan",
+            wa: "083234567890",
+            sponsor: "ADMIN001",
           },
           {
             no: 2,
             username: "diamond002",
-            nama: "Qadrina Putri",
-            wa: "086334567890",
-            sponsor: "ADMIN002",
+            nama: "Wina Marlina",
+            wa: "084334567890",
+            sponsor: "ADMIN003",
           },
           {
             no: 3,
             username: "diamond003",
-            nama: "Rendra Kusuma",
-            wa: "087434567890",
-            sponsor: "ADMIN001",
+            nama: "Xander Lee",
+            wa: "085434567890",
+            sponsor: "ADMIN002",
           },
           {
             no: 4,
             username: "diamond004",
-            nama: "Sinta Amelia",
-            wa: "088534567890",
-            sponsor: "ADMIN003",
+            nama: "Yanti Suryani",
+            wa: "086534567890",
+            sponsor: "ADMIN001",
           },
           {
             no: 5,
             username: "diamond005",
-            nama: "Taufiq Rahman",
-            wa: "089634567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 6,
-            username: "diamond006",
-            nama: "Ulfah Kusuma",
-            wa: "081734567890",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 7,
-            username: "diamond007",
-            nama: "Vendra Wijaya",
-            wa: "082834567890",
-            sponsor: "ADMIN003",
-          },
-          {
-            no: 8,
-            username: "diamond008",
-            nama: "Windy Suryani",
-            wa: "083934567890",
-            sponsor: "ADMIN002",
-          },
-          {
-            no: 9,
-            username: "diamond009",
-            nama: "Xena Permata",
-            wa: "084034567890",
-            sponsor: "ADMIN001",
-          },
-          {
-            no: 10,
-            username: "diamond010",
-            nama: "Yusuf Gunawan",
-            wa: "085134567890",
+            nama: "Zaki Mubaraq",
+            wa: "087634567890",
             sponsor: "ADMIN003",
           },
         ],
       };
 
-      // Function untuk membuka modal
-      function openRankModal(rankName) {
-        const modal = new bootstrap.Modal(
-          document.getElementById("rankDetailModal")
-        );
-        document.getElementById("rankTitle").textContent = rankName;
+      // 🔐 CEK AUTHENTICATION
+      function checkAuth() {
+        const token = localStorage.getItem("authToken");
+        const userData = localStorage.getItem("userData");
 
-        const tbody = document.getElementById("rankDetailTableBody");
-        tbody.innerHTML = "";
-
-        const users = usersByRank[rankName] || [];
-        users.forEach((user) => {
-          tbody.innerHTML += `
-      <tr>
-        <td>${user.no}</td>
-        <td><strong>${user.username}</strong></td>
-        <td>${user.nama}</td>
-        <td><a href="https://wa.me/${user.wa.replace(
-          /^0/,
-          "62"
-        )}" target="_blank">${user.wa}</a></td>
-        <td>${user.sponsor}</td>
-      </tr>
-    `;
-        });
-
-        modal.show();
-      }
-
-      // Initialize rank grid
-      function initializeRankGrid() {
-        const rankGrid = document.getElementById("rankGrid");
-        if (!rankGrid) {
-          console.error("rankGrid element not found");
-          return;
+        if (!token || !userData) {
+          console.log("❌ Tidak ada token/userData, redirect ke login");
+          alert("⚠️ Sesi berakhir. Silakan login kembali.");
+          window.location.href = "../login_page.html";
+          return null;
         }
 
-        rankGrid.innerHTML = "";
-
-        rankQualified.forEach((r) => {
-          const div = document.createElement("div");
-          div.className = `rank-card ${r.class}`;
-          div.style.cursor = "pointer";
-          div.style.transition = "0.2s";
-          div.innerHTML = `
-      <h6 style="margin-bottom: 8px; font-weight: 600;">${r.name}</h6>
-      <div class="count" style="font-size: 20px; font-weight: bold;">${r.count}</div>
-    `;
-
-          div.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("✅ Rank card clicked:", r.name);
-            openRankModal(r.name);
-          });
-
-          div.addEventListener("mouseover", function () {
-            this.style.transform = "translateY(-3px)";
-            this.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.15)";
-          });
-
-          div.addEventListener("mouseout", function () {
-            this.style.transform = "translateY(0)";
-            this.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.08)";
-          });
-
-          rankGrid.appendChild(div);
-        });
-
-        console.log("✅ Rank grid initialized");
-      }
-
-      // Initialize dashboard
-      function initDashboard() {
         try {
-          const userData_stored =
-            JSON.parse(localStorage.getItem("userData")) || userData;
-
-          if (document.getElementById("profileName")) {
-            document.getElementById("profileName").textContent =
-              userData_stored.name;
-          }
-          if (document.getElementById("profileId")) {
-            document.getElementById("profileId").textContent =
-              userData_stored.id;
-          }
-          if (document.getElementById("profileEmail")) {
-            document.getElementById("profileEmail").textContent =
-              userData_stored.email;
-          }
-
-          if (document.getElementById("totalEarnings")) {
-            document.getElementById("totalEarnings").textContent = formatRupiah(
-              userData_stored.totalEarnings
-            );
-          }
-          if (document.getElementById("cashbackComission")) {
-            document.getElementById("cashbackComission").textContent =
-              formatRupiah(userData_stored.cashbackComission);
-          }
-          if (document.getElementById("registrationComission")) {
-            document.getElementById("registrationComission").textContent =
-              formatRupiah(userData_stored.registrationComission);
-          }
-
-          loadGenerasi(userData_stored);
-          loadTeamTable(userData_stored);
-          loadEarningsTable(earningsData);
-          loadWithdrawHistory(withdrawData);
-
-          // Set status tim
-          document.getElementById("userCount").textContent = teamStatus.user;
-          document.getElementById("partnerCount").textContent =
-            teamStatus.partner;
-
-          console.log("✅ Dashboard initialized");
-        } catch (error) {
-          console.error("❌ Error:", error);
+          return JSON.parse(userData);
+        } catch (e) {
+          console.error("❌ Error parsing userData:", e);
+          localStorage.clear();
+          window.location.href = "../login_page.html";
+          return null;
         }
       }
 
-      // LOAD FUNCTIONS
-      function loadGenerasi(userData_stored) {
+      // 💰 FORMAT RUPIAH
+      function formatRupiah(value) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(value);
+      }
+
+      // 📊 LOAD DASHBOARD
+      function loadDashboard() {
+        const user = checkAuth();
+        if (!user) return;
+
+        console.log("✅ User data:", user);
+
+        // Ambil data dummy berdasarkan username/id
+        const username = String(user.id || user.name || "user123");
+        const dashData =
+          DUMMY_DATA[username.toLowerCase()] || DUMMY_DATA.user123;
+        // Update Profile
+        document.getElementById("profileName").textContent =
+          user.name || "User";
+        document.getElementById("profileEmail").textContent =
+          user.email || "user@example.com";
+        document.getElementById("profileRole").textContent =
+          user.role || "Member";
+        document.getElementById(
+          "referralLink"
+        ).textContent = `https://linkcashback.com/ref/${username}`;
+
+        // Update Statistik Referral
+        document.getElementById(
+          "totalReferrals"
+        ).textContent = `${dashData.totalReferrals} orang`;
+        document.getElementById("regCommission").textContent = formatRupiah(
+          dashData.regCommission
+        );
+        document.getElementById("teamBonus").textContent = formatRupiah(
+          dashData.teamBonus
+        );
+
+        // Update Status Pendapatan
+        document.getElementById("totalIncome").textContent = formatRupiah(
+          dashData.totalIncome
+        );
+        document.getElementById("pendingIncome").textContent = formatRupiah(
+          dashData.pendingIncome
+        );
+        document.getElementById("successIncome").textContent = formatRupiah(
+          dashData.successIncome
+        );
+        document.getElementById("availableBalance").textContent = formatRupiah(
+          dashData.availableBalance
+        );
+
+        // Update Total Penghasilan
+        document.getElementById("totalEarnings").textContent = formatRupiah(
+          dashData.totalIncome
+        );
+        document.getElementById("cashbackComission").textContent = formatRupiah(
+          dashData.cashbackComission
+        );
+        document.getElementById("registrationComission").textContent =
+          formatRupiah(dashData.registrationComission);
+
+        // Load Generasi
+        loadGenerasi(dashData.generasi);
+
+        // Load Team Table
+        loadTeamTable(dashData.generasi);
+
+        // Load Status Tim
+        document.getElementById("userCount").textContent = dashData.userCount;
+        document.getElementById("partnerCount").textContent =
+          dashData.partnerCount;
+
+        // Load Rank Qualified
+        loadRankGrid();
+
+        // Load Tables
+        loadEarningsTable(EARNINGS_DATA);
+        loadWithdrawHistory(WITHDRAW_DATA);
+
+        console.log("✅ Dashboard loaded successfully");
+      }
+
+      // 👥 LOAD GENERASI
+      function loadGenerasi(generasi) {
         const grid = document.getElementById("generasiGrid");
-        if (!grid) return;
         grid.innerHTML = "";
         for (let i = 1; i <= 10; i++) {
-          const count = userData_stored.generasi[i] || 0;
-          grid.innerHTML += `<div class="generasi-card"><div class="label">Generasi ${i}</div><div class="value">${count}</div></div>`;
+          const count = generasi[i] || 0;
+          grid.innerHTML += `
+            <div class="generasi-card">
+              <div class="label">Generasi ${i}</div>
+              <div class="value">${count}</div>
+            </div>
+          `;
         }
       }
 
-      function loadTeamTable(userData_stored) {
+      // 📋 LOAD TEAM TABLE
+      function loadTeamTable(generasi) {
         const tbody = document.getElementById("teamTableBody");
-        if (!tbody) return;
         tbody.innerHTML = "";
         for (let i = 1; i <= 10; i++) {
-          const members = userData_stored.generasi[i] || 0;
-          const regComission = members * 100000;
-          const cashbackComission = Math.random() * 1000000;
+          const members = generasi[i] || 0;
+          const regComm = members * 100000;
+          const cashComm = Math.floor(Math.random() * 1000000);
           tbody.innerHTML += `
-      <tr>
-        <td><span class="badge-gen">Gen ${i}</span></td>
-        <td>${members} orang</td>
-        <td>${formatRupiah(regComission)}</td>
-        <td>${formatRupiah(cashbackComission)}</td>
-        <td><strong>${formatRupiah(
-          regComission + cashbackComission
-        )}</strong></td>
-      </tr>
-    `;
+            <tr>
+              <td><span class="badge-gen">Gen ${i}</span></td>
+              <td>${members} orang</td>
+              <td>${formatRupiah(regComm)}</td>
+              <td>${formatRupiah(cashComm)}</td>
+              <td><strong>${formatRupiah(regComm + cashComm)}</strong></td>
+            </tr>
+          `;
         }
       }
 
+      // 💰 LOAD EARNINGS TABLE
       function loadEarningsTable(data) {
         const tbody = document.getElementById("earningsTableBody");
-        if (!tbody) return;
         tbody.innerHTML = "";
         data.forEach((item) => {
           tbody.innerHTML += `
-      <tr>
-        <td>${item.tanggal}</td>
-        <td><span class="badge-gen">Gen ${item.generasi}</span></td>
-        <td>${item.member}</td>
-        <td>${
-          item.jenis === "registration" ? "💳 Pendaftaran" : "💰 Cashback"
-        }</td>
-        <td><strong>${formatRupiah(item.nominal)}</strong></td>
-        <td>${item.keterangan}</td>
-      </tr>
-    `;
+            <tr>
+              <td>${item.tanggal}</td>
+              <td><span class="badge-gen">Gen ${item.generasi}</span></td>
+              <td>${item.member}</td>
+              <td>${
+                item.jenis === "registration" ? "💳 Pendaftaran" : "💰 Cashback"
+              }</td>
+              <td><strong>${formatRupiah(item.nominal)}</strong></td>
+            </tr>
+          `;
         });
       }
 
+      // 🏦 LOAD WITHDRAW HISTORY
       function loadWithdrawHistory(data) {
         const tbody = document.getElementById("withdrawTableBody");
-        if (!tbody) return;
         tbody.innerHTML = "";
         data.forEach((item) => {
-          const badgeColor =
+          const badge =
             item.status === "success"
               ? "success"
               : item.status === "pending"
               ? "warning"
               : "danger";
-          const statusText =
+          const icon =
             item.status === "success"
-              ? "✅ Berhasil"
+              ? "✅"
               : item.status === "pending"
-              ? "⏳ Pending"
-              : "❌ Gagal";
+              ? "⏳"
+              : "❌";
           tbody.innerHTML += `
-      <tr>
-        <td>${item.tanggal}</td>
-        <td><strong>${formatRupiah(item.nominal)}</strong></td>
-        <td><span class="badge bg-${badgeColor}">${statusText}</span></td>
-        <td>${item.catatan}</td>
-      </tr>
-    `;
+            <tr>
+              <td>${item.tanggal}</td>
+              <td><strong>${formatRupiah(item.nominal)}</strong></td>
+              <td><span class="badge bg-${badge}">${icon} ${item.status.toUpperCase()}</span></td>
+              <td>${item.catatan}</td>
+            </tr>
+          `;
         });
       }
 
-      // FILTER FUNCTIONS
-      function filterEarnings() {
-        const generasi = document.getElementById("filterGenerasi")?.value || "";
-        const tanggalAwal =
-          document.getElementById("filterTanggalAwal")?.value || "";
-        const tanggalAkhir =
-          document.getElementById("filterTanggalAkhir")?.value || "";
-        const jenis = document.getElementById("filterJenis")?.value || "";
+      // 🏅 LOAD RANK GRID
+      function loadRankGrid() {
+        const grid = document.getElementById("rankGrid");
+        grid.innerHTML = "";
+        RANK_QUALIFIED.forEach((rank) => {
+          const div = document.createElement("div");
+          div.className = `rank-card ${rank.class}`;
+          div.innerHTML = `
+            <h6>${rank.name}</h6>
+            <div class="count">${rank.count}</div>
+          `;
+          div.onclick = () => openRankModal(rank.name);
+          grid.appendChild(div);
+        });
+      }
 
-        let filtered = earningsData.filter((item) => {
-          if (generasi && item.generasi !== parseInt(generasi)) return false;
-          if (tanggalAwal && item.tanggal < tanggalAwal) return false;
-          if (tanggalAkhir && item.tanggal > tanggalAkhir) return false;
-          if (jenis && item.jenis !== jenis) return false;
+      // 📊 OPEN RANK MODAL
+      function openRankModal(rankName) {
+        document.getElementById("rankTitle").textContent = rankName;
+        const tbody = document.getElementById("rankDetailTableBody");
+        tbody.innerHTML = "";
+
+        const users = USERS_BY_RANK[rankName] || [];
+        users.forEach((user) => {
+          tbody.innerHTML += `
+            <tr>
+              <td>${user.no}</td>
+              <td><strong>${user.username}</strong></td>
+              <td>${user.nama}</td>
+              <td><a href="https://wa.me/62${user.wa.substring(
+                1
+              )}" target="_blank">${user.wa}</a></td>
+              <td>${user.sponsor}</td>
+            </tr>
+          `;
+        });
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("rankDetailModal")
+        );
+        modal.show();
+      }
+
+      // 🔍 FILTER FUNCTIONS
+      function filterEarnings() {
+        const gen = document.getElementById("filterGenerasi").value;
+        const startDate = document.getElementById("filterTanggalAwal").value;
+        const endDate = document.getElementById("filterTanggalAkhir").value;
+
+        let filtered = EARNINGS_DATA.filter((item) => {
+          if (gen && item.generasi !== parseInt(gen)) return false;
+          if (startDate && item.tanggal < startDate) return false;
+          if (endDate && item.tanggal > endDate) return false;
           return true;
         });
 
@@ -2031,21 +1556,16 @@
         document.getElementById("filterGenerasi").value = "";
         document.getElementById("filterTanggalAwal").value = "";
         document.getElementById("filterTanggalAkhir").value = "";
-        document.getElementById("filterJenis").value = "";
-        loadEarningsTable(earningsData);
+        loadEarningsTable(EARNINGS_DATA);
       }
 
       function filterWithdrawHistory() {
-        const tglAwal =
-          document.getElementById("filterTanggalAwalWD")?.value || "";
-        const tglAkhir =
-          document.getElementById("filterTanggalAkhirWD")?.value || "";
-        const status = document.getElementById("filterStatusWD")?.value || "";
+        const startDate = document.getElementById("filterTanggalAwalWD").value;
+        const endDate = document.getElementById("filterTanggalAkhirWD").value;
 
-        let filtered = withdrawData.filter((item) => {
-          if (tglAwal && item.tanggal < tglAwal) return false;
-          if (tglAkhir && item.tanggal > tglAkhir) return false;
-          if (status && item.status !== status) return false;
+        let filtered = WITHDRAW_DATA.filter((item) => {
+          if (startDate && item.tanggal < startDate) return false;
+          if (endDate && item.tanggal > endDate) return false;
           return true;
         });
 
@@ -2055,46 +1575,33 @@
       function resetWithdrawFilter() {
         document.getElementById("filterTanggalAwalWD").value = "";
         document.getElementById("filterTanggalAkhirWD").value = "";
-        document.getElementById("filterStatusWD").value = "";
-        loadWithdrawHistory(withdrawData);
+        loadWithdrawHistory(WITHDRAW_DATA);
       }
 
-      // UTILITY FUNCTIONS
-      function formatRupiah(value) {
-        return new Intl.NumberFormat("id-ID", {
-          style: "currency",
-          currency: "IDR",
-          minimumFractionDigits: 0,
-        }).format(value);
-      }
-
+      // 🔗 UTILITY FUNCTIONS
       function copyReferralLink() {
-        const link = document.getElementById("referralLink")?.textContent;
-        if (link) {
-          navigator.clipboard.writeText(link).then(() => {
-            alert("✅ Link referral berhasil disalin!");
-          });
-        }
+        const link = document.getElementById("referralLink").textContent;
+        navigator.clipboard.writeText(link).then(() => {
+          alert("✅ Link referral berhasil disalin!");
+        });
       }
 
       function logout() {
-        // localStorage.removeItem("authToken");
-        // localStorage.removeItem("userData");
-        // window.location.href = "login.html";
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userData");
         window.location.href = "../login_page.html";
       }
 
       function openWithdrawModal() {
         alert(
-          "Fitur tarik saldo akan segera tersedia! Silakan hubungi customer service kami."
+          "💳 Fitur tarik saldo akan segera tersedia!\nSilakan hubungi customer service kami."
         );
       }
 
-      // HANYA SATU DOMContentLoaded
+      // 🚀 INITIALIZE
       document.addEventListener("DOMContentLoaded", function () {
-        console.log("Page loaded");
-        initDashboard();
-        initializeRankGrid();
+        console.log("📱 Dashboard initialized");
+        loadDashboard();
       });
     </script>
   </body>
