@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Cashback - Penarikan Saldo</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f6fa;
+        color: #333;
+        min-height: 100vh;
+      }
+
+      /* NAVBAR */
+      .navbar-dashboard {
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        padding: 15px 20px;
+      }
+
+      .navbar-dashboard .navbar-brand {
+        font-weight: 900;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+      }
+
+      .navbar-dashboard .navbar-brand:hover {
+        color: white;
+      }
+
+      .back-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .back-btn:hover {
+        background: white;
+        color: #dc143c;
+      }
+
+      /* CONTAINER */
+      .withdraw-container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 0 15px;
+      }
+
+      /* HEADER CARD */
+      .header-card {
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-card h1 {
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .header-card p {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 20px;
+      }
+
+      .balance-display {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .balance-label {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 8px;
+      }
+
+      .balance-amount {
+        font-size: 36px;
+        font-weight: 900;
+      }
+
+      /* FORM CARD */
+      .form-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+      }
+
+      .form-card h2 {
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        color: #dc143c;
+      }
+
+      .form-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .form-control,
+      .form-select {
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 12px 15px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #dc143c;
+        box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+        outline: none;
+      }
+
+      .input-group-text {
+        background: #f5f6fa;
+        border: 2px solid #e0e0e0;
+        border-right: none;
+        font-weight: 600;
+        color: #666;
+      }
+
+      .input-group .form-control {
+        border-left: none;
+      }
+
+      .input-group:focus-within .input-group-text {
+        border-color: #dc143c;
+        background: rgba(220, 20, 60, 0.05);
+      }
+
+      .quick-amount {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .quick-amount-btn {
+        background: #f5f6fa;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #333;
+      }
+
+      .quick-amount-btn:hover {
+        background: #dc143c;
+        color: white;
+        border-color: #dc143c;
+        transform: translateY(-2px);
+      }
+
+      .info-box {
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+      }
+
+      .info-box strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #1976d2;
+      }
+
+      .info-box ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .info-box li {
+        font-size: 13px;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+      }
+
+      .warning-box strong {
+        color: #856404;
+      }
+
+      .warning-box p {
+        font-size: 13px;
+        margin: 8px 0 0 0;
+        color: #856404;
+      }
+
+      /* BUTTONS */
+      .btn-submit {
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
+      }
+
+      .btn-submit:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-cancel {
+        background: #f5f6fa;
+        color: #666;
+        border: 2px solid #e0e0e0;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 10px;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .btn-cancel:hover {
+        background: #e0e0e0;
+        color: #333;
+      }
+
+      /* BANK LIST */
+      .bank-option {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      /* VALIDATION FEEDBACK */
+      .invalid-feedback {
+        display: block;
+        font-size: 13px;
+        color: #dc3545;
+        margin-top: 5px;
+      }
+
+      .is-invalid {
+        border-color: #dc3545;
+      }
+
+      /* SUCCESS MODAL */
+      .success-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .success-modal {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 400px;
+        text-align: center;
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .success-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+
+      .success-modal h3 {
+        font-size: 22px;
+        font-weight: 900;
+        color: #dc143c;
+        margin-bottom: 15px;
+      }
+
+      .success-modal p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .success-details {
+        background: #f5f6fa;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .success-details p {
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      .btn-close-success {
+        background: linear-gradient(135deg, #dc143c 0%, #b30000 100%);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .withdraw-container {
+          margin: 20px auto;
+        }
+
+        .header-card {
+          padding: 20px;
+        }
+
+        .header-card h1 {
+          font-size: 22px;
+        }
+
+        .balance-amount {
+          font-size: 28px;
+        }
+
+        .form-card {
+          padding: 20px;
+        }
+
+        .form-card h2 {
+          font-size: 18px;
+        }
+
+        .quick-amount {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .success-modal {
+          margin: 20px;
+          padding: 30px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar-dashboard .navbar-brand {
+          font-size: 16px;
+        }
+
+        .header-card h1 {
+          font-size: 20px;
+        }
+
+        .balance-amount {
+          font-size: 24px;
+        }
+
+        .quick-amount {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar-dashboard">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <img
+          src="../assets/img/testimonials/logow.png"
+          width="80px"
+          alt="Link logo"
+        />
+        <a href="./dashboard.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+      </div>
+    </nav>
+
+    <!-- CONTAINER -->
+    <div class="withdraw-container">
+      <!-- HEADER CARD -->
+      <div class="header-card">
+        <h1>💳 Penarikan Saldo</h1>
+        <p>Tarik saldo Anda dengan mudah dan aman</p>
+        <div class="balance-display">
+          <div class="balance-label">Saldo Tersedia</div>
+          <div class="balance-amount" id="availableBalance">Rp 0</div>
+        </div>
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <h2>📝 Form Penarikan</h2>
+        <form id="withdrawForm">
+          <!-- Nominal Penarikan -->
+          <div class="mb-4">
+            <label for="withdrawAmount" class="form-label">
+              💰 Nominal Penarikan
+            </label>
+            <div class="input-group">
+              <span class="input-group-text">Rp</span>
+              <input
+                type="number"
+                class="form-control"
+                id="withdrawAmount"
+                placeholder="Masukkan nominal"
+                step="50000"
+                min="50000"
+                required
+              />
+            </div>
+            <small class="text-muted d-block mt-2">
+              Minimal: Rp 50.000 | Kelipatan: Rp 50.000
+            </small>
+            <div class="quick-amount">
+              <button
+                type="button"
+                class="quick-amount-btn"
+                onclick="setAmount(100000)"
+              >
+                Rp 100.000
+              </button>
+              <button
+                type="button"
+                class="quick-amount-btn"
+                onclick="setAmount(500000)"
+              >
+                Rp 500.000
+              </button>
+              <button
+                type="button"
+                class="quick-amount-btn"
+                onclick="setAmount(1000000)"
+              >
+                Rp 1.000.000
+              </button>
+            </div>
+          </div>
+
+          <!-- Bank Tujuan -->
+          <div class="mb-4">
+            <label for="withdrawBank" class="form-label">
+              🏦 Bank Tujuan
+            </label>
+            <select class="form-select" id="withdrawBank" required>
+              <option value="">-- Pilih Bank --</option>
+              <option value="BCA">BCA - Bank Central Asia</option>
+              <option value="Mandiri">Mandiri - Bank Mandiri</option>
+              <option value="BRI">BRI - Bank Rakyat Indonesia</option>
+              <option value="BNI">BNI - Bank Negara Indonesia</option>
+              <option value="CIMB">CIMB Niaga</option>
+              <option value="Permata">Permata Bank</option>
+              <option value="BSI">BSI - Bank Syariah Indonesia</option>
+              <option value="Danamon">Danamon</option>
+              <option value="BTPN">BTPN</option>
+              <option value="Jenius">Jenius by BTPN</option>
+              <option value="SeaBank">SeaBank</option>
+              <option value="BNC">BNC - Bank Neo Commerce</option>
+              <option value="Jago">Bank Jago</option>
+            </select>
+          </div>
+
+          <!-- Nomor Rekening -->
+          <div class="mb-4">
+            <label for="withdrawAccountNumber" class="form-label">
+              🔢 Nomor Rekening
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="withdrawAccountNumber"
+              placeholder="Contoh: 1234567890"
+              required
+            />
+          </div>
+
+          <!-- Nama Pemilik Rekening -->
+          <div class="mb-4">
+            <label for="withdrawAccountName" class="form-label">
+              👤 Nama Pemilik Rekening
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="withdrawAccountName"
+              placeholder="Sesuai dengan nama di rekening bank"
+              required
+            />
+            <small class="text-muted d-block mt-2">
+              Pastikan nama sesuai dengan buku rekening
+            </small>
+          </div>
+
+          <!-- Catatan -->
+          <div class="mb-4">
+            <label for="withdrawNote" class="form-label">
+              📝 Catatan (Opsional)
+            </label>
+            <textarea
+              class="form-control"
+              id="withdrawNote"
+              rows="3"
+              placeholder="Tambahkan catatan jika diperlukan..."
+            ></textarea>
+          </div>
+
+          <!-- Info Box -->
+          <div class="info-box">
+            <strong>ℹ️ Informasi Penting:</strong>
+            <ul>
+              <li>Proses penarikan dilakukan dalam 1-3 hari kerja</li>
+              <li>Pastikan data rekening yang Anda masukkan benar</li>
+              <li>
+                Penarikan hanya dapat dilakukan ke rekening atas nama sendiri
+              </li>
+              <li>Minimal penarikan Rp 50.000 dengan kelipatan Rp 50.000</li>
+              <li>Penarikan yang sudah diajukan tidak dapat dibatalkan</li>
+            </ul>
+          </div>
+
+          <!-- Warning Box -->
+          <div class="warning-box">
+            <strong>⚠️ Perhatian!</strong>
+            <p>
+              Kesalahan dalam pengisian data rekening dapat menyebabkan
+              penarikan gagal atau dana tertunda. Pastikan semua data yang
+              dimasukkan sudah benar sebelum mengirim.
+            </p>
+          </div>
+
+          <!-- Buttons -->
+          <button type="submit" class="btn-submit" id="btnSubmit">
+            ✅ Ajukan Penarikan
+          </button>
+          <a href="dashboard.html" class="btn-cancel">❌ Batal</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- SUCCESS OVERLAY -->
+    <div class="success-overlay" id="successOverlay">
+      <div class="success-modal">
+        <div class="success-icon">✅</div>
+        <h3>Penarikan Berhasil Diajukan!</h3>
+        <p>Permintaan penarikan Anda telah berhasil dikirim.</p>
+        <div class="success-details" id="successDetails"></div>
+        <p style="color: #999; font-size: 12px">
+          Anda akan menerima notifikasi setelah penarikan diproses.
+        </p>
+        <button class="btn-close-success" onclick="closeSuccessModal()">
+          Kembali ke Dashboard
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // 🎭 DATA DUMMY
+      const DUMMY_DATA = {
+        admin: { availableBalance: 14000000 },
+        user123: { availableBalance: 7000000 },
+        member1: { availableBalance: 2700000 },
+      };
+
+      // 💰 FORMAT RUPIAH
+      function formatRupiah(value) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(value);
+      }
+
+      // 🔐 CHECK AUTH & LOAD BALANCE
+      function loadBalance() {
+        const userData = localStorage.getItem("userData");
+
+        if (!userData) {
+          alert("⚠️ Sesi berakhir. Silakan login kembali.");
+          window.location.href = "../login_page.html";
+          return;
+        }
+
+        try {
+          const user = JSON.parse(userData);
+          const username = String(user.id || user.name || "user123");
+          const dashData =
+            DUMMY_DATA[username.toLowerCase()] || DUMMY_DATA.user123;
+
+          document.getElementById("availableBalance").textContent =
+            formatRupiah(dashData.availableBalance);
+        } catch (e) {
+          console.error("Error loading balance:", e);
+          localStorage.clear();
+          window.location.href = "../login_page.html";
+        }
+      }
+
+      // 💵 SET QUICK AMOUNT
+      function setAmount(amount) {
+        document.getElementById("withdrawAmount").value = amount;
+      }
+
+      // 📤 SUBMIT FORM
+      document
+        .getElementById("withdrawForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const amount = parseInt(
+            document.getElementById("withdrawAmount").value
+          );
+          const bank = document.getElementById("withdrawBank").value;
+          const accountNumber = document.getElementById(
+            "withdrawAccountNumber"
+          ).value;
+          const accountName = document.getElementById(
+            "withdrawAccountName"
+          ).value;
+          const note = document.getElementById("withdrawNote").value;
+
+          // Get user data
+          const userData = JSON.parse(localStorage.getItem("userData"));
+          const username = String(userData.id || userData.name || "user123");
+          const dashData =
+            DUMMY_DATA[username.toLowerCase()] || DUMMY_DATA.user123;
+
+          // Validasi saldo
+          if (amount > dashData.availableBalance) {
+            alert("❌ Saldo tidak mencukupi!");
+            return;
+          }
+
+          // Validasi kelipatan 50.000
+          if (amount % 50000 !== 0) {
+            alert("❌ Nominal harus kelipatan Rp 50.000!");
+            return;
+          }
+
+          // Validasi minimal
+          if (amount < 50000) {
+            alert("❌ Minimal penarikan Rp 50.000!");
+            return;
+          }
+
+          // Disable button
+          const btnSubmit = document.getElementById("btnSubmit");
+          btnSubmit.disabled = true;
+          btnSubmit.textContent = "⏳ Memproses...";
+
+          // Simulasi API call
+          setTimeout(() => {
+            // Log data
+            console.log("Withdraw Request:", {
+              amount,
+              bank,
+              accountNumber,
+              accountName,
+              note,
+              timestamp: new Date().toISOString(),
+            });
+
+            // Show success modal
+            showSuccessModal(amount, bank, accountNumber, accountName);
+
+            // Enable button
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "✅ Ajukan Penarikan";
+
+            // Reset form
+            document.getElementById("withdrawForm").reset();
+          }, 1500);
+        });
+
+      // ✅ SHOW SUCCESS MODAL
+      function showSuccessModal(amount, bank, accountNumber, accountName) {
+        const details = `
+          <p><strong>Nominal:</strong> ${formatRupiah(amount)}</p>
+          <p><strong>Bank:</strong> ${bank}</p>
+          <p><strong>Rekening:</strong> ${accountNumber}</p>
+          <p><strong>Atas Nama:</strong> ${accountName}</p>
+          <p><strong>Waktu:</strong> ${new Date().toLocaleString("id-ID")}</p>
+        `;
+
+        document.getElementById("successDetails").innerHTML = details;
+        document.getElementById("successOverlay").style.display = "flex";
+      }
+
+      // ❌ CLOSE SUCCESS MODAL
+      function closeSuccessModal() {
+        document.getElementById("successOverlay").style.display = "none";
+        window.location.href = "dashboard.html";
+      }
+
+      // 🚀 INITIALIZE
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("💳 Withdraw page initialized");
+        loadBalance();
+      });
+    </script>
+  </body>
+</html>

@@ -321,6 +321,21 @@
         color: #4caf50;
       }
 
+      /* INFO ICON */
+      .info-icon {
+        cursor: pointer;
+        margin-left: 5px;
+        font-size: 14px;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .info-icon:hover {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
       /* WITHDRAW SECTION */
       .withdraw-section {
         background: white;
@@ -789,9 +804,14 @@
               <div class="profile-header">
                 <div class="profile-avatar">👤</div>
                 <div class="profile-info">
-                  <h3 id="profileName">Loading...</h3>
-                  <p>Email: <span id="profileEmail">Loading...</span></p>
-                  <p>Role: <span id="profileRole">Loading...</span></p>
+                  <!-- <p>User Name</p> -->
+                  <!-- <h3 id="profileName">Loading...</h3>
+                  <p>Email: <span id="profileEmail">Loading...</span></p> -->
+                  <div style="display: flex; align-items: center; gap: 8px">
+                    <h3>User Name :</h3>
+                    <h3 id="profileName">Loading...</h3>
+                  </div>
+                  <p>Rank : <span id="profileRole">Bronze</span></p>
                 </div>
               </div>
 
@@ -830,7 +850,12 @@
                   <div class="earnings-header">
                     <div class="earnings-icon total">💰</div>
                     <div class="earnings-info">
-                      <div class="earnings-label">Total Pendapatan</div>
+                      <div class="earnings-label">
+                        Total Pendapatan
+                        <span class="info-icon" onclick="showInfoModal('total')"
+                          >❓</span
+                        >
+                      </div>
                       <div class="earnings-amount" id="totalIncome">Rp 0</div>
                     </div>
                   </div>
@@ -841,7 +866,14 @@
                   <div class="earnings-header">
                     <div class="earnings-icon pending">⏳</div>
                     <div class="earnings-info">
-                      <div class="earnings-label">Pendapatan Tertunda</div>
+                      <div class="earnings-label">
+                        Pendapatan Tertunda
+                        <span
+                          class="info-icon"
+                          onclick="showInfoModal('pending')"
+                          >❓</span
+                        >
+                      </div>
                       <div
                         class="earnings-amount pending-text"
                         id="pendingIncome"
@@ -857,7 +889,14 @@
                   <div class="earnings-header">
                     <div class="earnings-icon success">✅</div>
                     <div class="earnings-info">
-                      <div class="earnings-label">Pendapatan Berhasil</div>
+                      <div class="earnings-label">
+                        Pendapatan Berhasil
+                        <span
+                          class="info-icon"
+                          onclick="showInfoModal('success')"
+                          >❓</span
+                        >
+                      </div>
                       <div
                         class="earnings-amount success-text"
                         id="successIncome"
@@ -883,15 +922,14 @@
                   >
                 </p>
                 <p style="font-size: 12px; color: #999; margin-bottom: 0">
-                  Minimal penarikan: <strong>Rp 100.000</strong> | Maksimal:
-                  <strong>Rp 10.000.000/hari</strong>
+                  Penarikan Kelipatan <strong>Rp 50.000</strong>
                 </p>
               </div>
               <button class="btn-withdraw" onclick="openWithdrawModal()">
                 💳 Tarik Saldo
               </button>
             </div>
-
+            <!-- pages penarikan saldo -->
             <!-- STATISTICS -->
             <h4>📊 Total Penghasilan</h4>
             <div class="row">
@@ -934,9 +972,9 @@
                 <thead>
                   <tr>
                     <th>Generasi</th>
-                    <th>Jumlah</th>
-                    <th>Komisi Reg</th>
-                    <th>Komisi CB</th>
+                    <th>Jumlah Member</th>
+                    <th>Komisi Pendaftaran</th>
+                    <th>Komisi Cashback</th>
                     <th>Total</th>
                   </tr>
                 </thead>
@@ -1103,6 +1141,34 @@
                     <tbody id="rankDetailTableBody"></tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL INFO -->
+        <div class="modal fade" id="infoModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="infoModalTitle">ℹ️ Informasi</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body" id="infoModalBody">
+                <!-- Konten akan diisi via JavaScript -->
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Tutup
+                </button>
               </div>
             </div>
           </div>
@@ -1518,10 +1584,10 @@
         // Update Profile
         document.getElementById("profileName").textContent =
           user.name || "User";
-        document.getElementById("profileEmail").textContent =
-          user.email || "user@example.com";
-        document.getElementById("profileRole").textContent =
-          user.role || "Member";
+        // document.getElementById("profileEmail").textContent =
+        //   user.email || "user@example.com";
+        // document.getElementById("profileRole").textContent =
+        //   user.role || "Member";
         document.getElementById(
           "referralLink"
         ).textContent = `https://linkcashback.com/ref/${username}`;
@@ -1705,6 +1771,41 @@
         modal.show();
       }
 
+      // ℹ️ SHOW INFO MODAL
+      // ℹ️ SHOW INFO MODAL
+      function showInfoModal(type) {
+        const modalTitle = document.getElementById("infoModalTitle");
+        const modalBody = document.getElementById("infoModalBody");
+
+        const infoContent = {
+          total: {
+            title: "💰 Total Pendapatan",
+            content: `
+              <p>Jumlah total pendapatan dari <strong>Cashback Referral</strong> dan <strong>Marketplace Pribadi & Tim Anda</strong>.</p>
+            `,
+          },
+          pending: {
+            title: "⏳ Pendapatan Tertunda",
+            content: `
+              <p>Total pendapatan dari cashback marketplace Pribadi & Tim Anda yang <strong>status transaksinya belum selesai</strong>.</p>
+            `,
+          },
+          success: {
+            title: "✅ Pendapatan Berhasil",
+            content: `
+              <p>Total pendapatan cashback marketplace Pribadi & Tim Anda yang <strong>status transaksinya sudah selesai</strong> dan berhasil mendapatkan cashback.</p>
+            `,
+          },
+        };
+
+        const info = infoContent[type] || infoContent.total;
+        modalTitle.innerHTML = info.title;
+        modalBody.innerHTML = info.content;
+
+        const modal = new bootstrap.Modal(document.getElementById("infoModal"));
+        modal.show();
+      }
+
       // 🔍 FILTER FUNCTIONS
       function filterEarnings() {
         const gen = document.getElementById("filterGenerasi").value;
@@ -1762,9 +1863,7 @@
       }
 
       function openWithdrawModal() {
-        alert(
-          "💳 Fitur tarik saldo akan segera tersedia!\nSilakan hubungi customer service kami."
-        );
+        window.location.href = "./penarikan_saldo.html"; // atau path sesuai struktur folder
       }
 
       // 🚀 INITIALIZE
